@@ -66,6 +66,17 @@ public class MainActivity extends AppCompatActivity {
 
     private CurrentMonthInfo currentMonthInfo;
     private ViewGroup currentViewGroup;
+    List<Fragment> fragments = new ArrayList<>();
+    List<Fragment> tempFragments = new ArrayList<>();
+    private VPStatePagerAdapter vpStatePagerAdapter;
+
+    WeekScheduleFragment weekScheduleFragment0 = new WeekScheduleFragment();
+    WeekScheduleFragment weekScheduleFragment1 = new WeekScheduleFragment();
+    WeekScheduleFragment weekScheduleFragment2 = new WeekScheduleFragment();
+    WeekScheduleFragment weekScheduleFragment3 = new WeekScheduleFragment();
+    WeekScheduleFragment weekScheduleFragment4 = new WeekScheduleFragment();
+    WeekScheduleFragment weekScheduleFragment5 = new WeekScheduleFragment();
+    WeekScheduleFragment weekScheduleFragment6 = new WeekScheduleFragment();
 
 
     @Override
@@ -121,18 +132,23 @@ public class MainActivity extends AppCompatActivity {
 
         //ll_week.setVisibility(View.GONE);
 
+        tempFragments.add(weekScheduleFragment0);
+        tempFragments.add(weekScheduleFragment1);
+        tempFragments.add(weekScheduleFragment2);
+        tempFragments.add(weekScheduleFragment3);
+        tempFragments.add(weekScheduleFragment4);
+        tempFragments.add(weekScheduleFragment5);
+        tempFragments.add(weekScheduleFragment6);
 
-        List<Fragment> fragments = new ArrayList<>();
-        for (int i = 0; i < 7; i++) {
-            fragments.add(new WeekScheduleFragment());
-        }
 
-        VPStatePagerAdapter vpStatePagerAdapter = new VPStatePagerAdapter(getSupportFragmentManager(), fragments);
+        vpStatePagerAdapter = new VPStatePagerAdapter(getSupportFragmentManager(), fragments);
         vp_weekSchedule.setAdapter(vpStatePagerAdapter);
 
         vp_weekSchedule.setOffscreenPageLimit(7);
 
         vp_weekSchedule.setOnPageChangeListener(onPageChangeListener);
+
+        initBackground();
     }
 
     private float getEditAreaTranslateHeight(int week) {
@@ -409,14 +425,19 @@ public class MainActivity extends AppCompatActivity {
      * 日期信息实体类
      **/
     public class DayInfo {
+        public int position;
         public int day;
         public DayType dayType;
+        public int daysOfWeek;
+        public int whichWeek;
+        List<ScheduleData.Todo> todos = new ArrayList<ScheduleData.Todo>();
 
         @Override
         public String toString() {
             return String.valueOf(day);
         }
     }
+
 
     /**
      * 日期类型
@@ -497,8 +518,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        calendar.add(Calendar.MONTH, 1);//还原月份数据
-
         if (firstOfWeek == 7) {
             //应为星期一是第二周的第一天,所以做数据处理
             listDayInfos.clear();
@@ -511,9 +530,62 @@ public class MainActivity extends AppCompatActivity {
             listDayInfos.addAll(Arrays.asList(dayInfos));
         }
 
+        int[] weekDays = {0, 0, 0, 0, 0, 0, 0};
+        List<ScheduleData.Todo> tempTodos = new ArrayList<ScheduleData.Todo>();
+
+
+        for (int i = 0; i < listDayInfos.size(); i++) {
+            switch (i / 7) {
+                case 0:
+                    if (listDayInfos.get(i).dayType == DayType.DAY_TYPE_NOW) {
+                        weekDays[0]++;
+                        listDayInfos.get(i).whichWeek = 1;
+                    }
+                    break;
+                case 1:
+                    if (listDayInfos.get(i).dayType == DayType.DAY_TYPE_NOW) {
+                        weekDays[1]++;
+                        listDayInfos.get(i).whichWeek = 2;
+                    }
+                    break;
+                case 2:
+                    if (listDayInfos.get(i).dayType == DayType.DAY_TYPE_NOW) {
+                        weekDays[2]++;
+                        listDayInfos.get(i).whichWeek = 3;
+                    }
+                    break;
+                case 3:
+                    if (listDayInfos.get(i).dayType == DayType.DAY_TYPE_NOW) {
+                        weekDays[3]++;
+                        listDayInfos.get(i).whichWeek = 4;
+                    }
+                    break;
+                case 4:
+                    if (listDayInfos.get(i).dayType == DayType.DAY_TYPE_NOW) {
+                        weekDays[4]++;
+                        listDayInfos.get(i).whichWeek = 5;
+                    }
+                    break;
+                case 5:
+                    if (listDayInfos.get(i).dayType == DayType.DAY_TYPE_NOW) {
+                        weekDays[5]++;
+                        listDayInfos.get(i).whichWeek = 6;
+                    }
+                    break;
+            }
+        }
+
+
+        for (int i = 0; i < listDayInfos.size(); i++) {
+            listDayInfos.get(i).position = i;
+            listDayInfos.get(i).daysOfWeek = weekDays[i / 7];///一周有几天是今天
+        }
+
 
         render(ll_monthCalendarArea, listDayInfos);
 
+
+        calendar.add(Calendar.MONTH, 1);//还原月份数据
         widgetCalendar_txtTitle.setText(new SimpleDateFormat("yyyy.MM").format(calendar.getTime()));//设置日历显示的标题
         // "2015-11-30 17:11:01",
         currentYearAndMonth = (new SimpleDateFormat("yyyy-MM-dd").format(calendar.getTime()));
@@ -537,7 +609,7 @@ public class MainActivity extends AppCompatActivity {
                 ((TextView) dayOfWeek.findViewById(R.id.tv_gongli)).setText("");
             }
 
-            dayOfWeek.setTag(i);
+            dayOfWeek.setTag(listDayInfos.get(i));
             dayOfWeek.setOnClickListener(onClickListener);
         }
 
@@ -560,15 +632,39 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onPageSelected(int position) {
-            for (int i = 0; i < 7; i++) {
-                if (i == position) {
-                    ((ViewGroup) currentViewGroup.getParent()).getChildAt(i).setBackgroundColor(getResources().getColor(R.color.weekSchedule));
+            if (listDayInfos.get(currentMonthInfo.currentOpenDayOfMonth).daysOfWeek == 7) {
+                for (int i = 0; i < 7; i++) {
+                    if (i == position) {
+                        ((ViewGroup) currentViewGroup.getParent()).getChildAt(i).setBackgroundColor(getResources().getColor(R.color.weekSchedule));
+                    } else {
+                        ((ViewGroup) currentViewGroup.getParent()).getChildAt(i).setBackgroundColor(getResources().getColor(R.color.white));
+                    }
+                }
+                currentMonthInfo.currentOpenDayOfWeek = position;
+            } else {
+                if (listDayInfos.get(currentMonthInfo.currentOpenDayOfMonth).whichWeek == 1) {
+                    for (int i = 0; i < 7; i++) {
+                        if (i == position + (7 - listDayInfos.get(currentMonthInfo.currentOpenDayOfMonth).daysOfWeek)) {
+                            ((ViewGroup) currentViewGroup.getParent()).getChildAt(i).setBackgroundColor(getResources().getColor(R.color.weekSchedule));
+                        } else {
+                            ((ViewGroup) currentViewGroup.getParent()).getChildAt(i).setBackgroundColor(getResources().getColor(R.color.white));
+                        }
+                    }
+                    Log.i("222", "eeee"+position );
+                    currentMonthInfo.currentOpenDayOfWeek = position ;
                 } else {
-                    ((ViewGroup) currentViewGroup.getParent()).getChildAt(i).setBackgroundColor(getResources().getColor(R.color.white));
-
+                    for (int i = 0; i < 7; i++) {
+                        if (i == position) {
+                            ((ViewGroup) currentViewGroup.getParent()).getChildAt(i).setBackgroundColor(getResources().getColor(R.color.weekSchedule));
+                        } else {
+                            ((ViewGroup) currentViewGroup.getParent()).getChildAt(i).setBackgroundColor(getResources().getColor(R.color.white));
+                        }
+                    }
+                    currentMonthInfo.currentOpenDayOfWeek = position;
                 }
             }
-            currentMonthInfo.currentOpenDayOfWeek = position;
+
+
         }
 
         @Override
@@ -581,17 +677,15 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-            int position = (int) v.getTag();
-            if (listDayInfos.get(position).dayType == DayType.DAY_TYPE_NOW) {
+            DayInfo dayInfo = (DayInfo) v.getTag();
+            if (listDayInfos.get(dayInfo.position).dayType == DayType.DAY_TYPE_NOW) {
                 currentViewGroup = (ViewGroup) v;
                 initBackground();
                 v.setBackgroundColor(getResources().getColor(R.color.weekSchedule));
+                Log.i("44",""+listDayInfos.get(dayInfo.position).whichWeek+":"+((dayInfo.position) % 7 - (7 - dayInfo.daysOfWeek))+":"+(currentMonthInfo.currentOpenDayOfWeek));
 
-                Log.i("position", position / 7 + ":" + currentMonthInfo.currentOpenWeek);
-                Log.i("position", position % 7 + ":" + currentMonthInfo.currentOpenDayOfWeek+(currentMonthInfo.currentOpenDayOfWeek == (position % 7)));
-
-                if ((position / 7 != currentMonthInfo.currentOpenWeek) || ((position / 7 == currentMonthInfo.currentOpenWeek) && currentMonthInfo.currentOpenDayOfWeek == position % 7)) {
-                    switch (position / 7) {
+                if ((dayInfo.position / 7 != currentMonthInfo.currentOpenWeek) || ((dayInfo.position / 7 == currentMonthInfo.currentOpenWeek) && currentMonthInfo.currentOpenDayOfWeek == (listDayInfos.get(dayInfo.position).whichWeek == 1 ? (dayInfo.position) % 7 - (7 - dayInfo.daysOfWeek) : dayInfo.position % 7))) {
+                    switch (dayInfo.position / 7) {
 
                         case 0:
                             if (isCanTranslate()) {
@@ -641,7 +735,28 @@ public class MainActivity extends AppCompatActivity {
                             break;
                     }
                 }
-                vp_weekSchedule.setCurrentItem(position % 7);
+
+                fragments.clear();
+                for (int i = 0; i < listDayInfos.get(dayInfo.position).daysOfWeek; i++) {
+                    fragments.add(tempFragments.get(i));
+                }
+                vpStatePagerAdapter.notifyDataSetChanged();
+                currentMonthInfo.currentOpenDayOfMonth = dayInfo.position;
+                if (listDayInfos.get(dayInfo.position).daysOfWeek == 7) {
+                    currentMonthInfo.currentOpenDayOfWeek = (dayInfo.position) % 7;
+                    vp_weekSchedule.setCurrentItem((dayInfo.position) % listDayInfos.get(dayInfo.position).daysOfWeek);
+                } else {
+                    if (listDayInfos.get(dayInfo.position).whichWeek == 1) {
+                        Log.i("dayInfo", "" + ((dayInfo.position) % 7 - (7 - dayInfo.daysOfWeek)));
+                        Log.i("222", "wwwww"+((dayInfo.position) % 7 - (7 - dayInfo.daysOfWeek)));
+                        currentMonthInfo.currentOpenDayOfWeek = (dayInfo.position) % 7 - (7 - dayInfo.daysOfWeek);
+                        vp_weekSchedule.setCurrentItem((dayInfo.position) % 7 - (7 - dayInfo.daysOfWeek));
+                    } else {
+                        currentMonthInfo.currentOpenDayOfWeek = (dayInfo.position) % 7;
+                        vp_weekSchedule.setCurrentItem((dayInfo.position) % 7);
+                    }
+                }
+
 
             }
         }

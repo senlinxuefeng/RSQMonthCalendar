@@ -9,6 +9,7 @@ public class CurrentMonthInfo {
     public int weeks = 6;
     public int currentOpenWeek = -1;
     public int currentOpenDayOfWeek = -1;
+    public int currentOpenDayOfMonth = -1;
     public float monthEditAreaHeight;
     public float monthEditAreaWidth;
     public int weekEditAreaHeight;
