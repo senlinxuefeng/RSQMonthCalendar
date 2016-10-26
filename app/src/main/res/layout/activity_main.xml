@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="0dp"
+    android:background="@color/weekSchedule">
+
+    <LinearLayout
+        android:id="@+id/ll_week"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:background="@color/weekSchedule"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_weekSchedule"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_titleHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:background="@android:color/white"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="128dp"
+                    android:layout_height="match_parent">
+
+                    <RelativeLayout
+                        android:id="@+id/widgetCalendar_imgForeMonth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:background="@drawable/pre_month" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/widgetCalendar_txtTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="18dp"
+                        android:layout_toRightOf="@id/widgetCalendar_imgForeMonth"
+                        android:gravity="center"
+                        android:text="2015.05"
+                        android:textColor="#000000"
+                        android:textSize="14sp" />
+
+                    <RelativeLayout
+                        android:id="@+id/widgetCalendar_imgNextMonth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="18dp"
+                        android:layout_toRightOf="@id/widgetCalendar_txtTitle"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="21dp"
+                            android:layout_height="21dp"
+                            android:background="@drawable/pre_month"
+                            android:rotation="180" />
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_backToToday"
+                    android:layout_width="56dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="18dp"
+                    android:gravity="center"
+                    android:text="今天"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/weekSchedule"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:background="@android:color/white"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:text="日"
+                    android:textColor="#ea4545"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:text="一"
+                    android:textColor="@android:color/black"
+                    android:textSize="10sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#fe5566"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:text="二"
+                    android:textColor="@android:color/black"
+                    android:textSize="10sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#fe5566"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:text="三"
+                    android:textColor="@android:color/black"
+                    android:textSize="10sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#fe5566"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:text="四"
+                    android:textColor="@android:color/black"
+                    android:textSize="10sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#fe5566"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:text="五"
+                    android:textColor="@android:color/black"
+                    android:textSize="10sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#fe5566"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:text="六"
+                    android:textColor="#ea4545"
+                    android:textSize="10sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#fe5566"
+                    android:visibility="gone" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_monthCalendarArea"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_1"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_2"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_3"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_4"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_5"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_6"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+
+                <include layout="@layout/item_month_calendar"></include>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
