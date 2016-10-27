@@ -25,7 +25,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
+public class MonthScheduleActivity extends AppCompatActivity {
 
     @BindView(R.id.ll_week)
     LinearLayout ll_week;
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_month_schedule);
         ButterKnife.bind(this);
 
         ViewTreeObserver vto = ll_monthCalendarArea.getViewTreeObserver();
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 initLayout(calendar);
             }
         });
-        
+
     }
 
     /**
@@ -757,9 +757,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                if (currentMonthInfo.isExpand){//只有展开才会变色
-                    v.setBackgroundColor(getResources().getColor(R.color.weekSchedule));
-                }
+                v.setBackgroundColor(getResources().getColor(R.color.weekSchedule));
 
             }
         }

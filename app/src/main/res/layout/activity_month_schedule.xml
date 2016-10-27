@@ -230,19 +230,19 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
             </LinearLayout>
 
             <LinearLayout
@@ -253,19 +253,19 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
             </LinearLayout>
 
             <LinearLayout
@@ -276,19 +276,19 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
             </LinearLayout>
 
             <LinearLayout
@@ -298,19 +298,19 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
             </LinearLayout>
 
             <LinearLayout
@@ -320,19 +320,19 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
             </LinearLayout>
 
             <LinearLayout
@@ -342,19 +342,19 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
 
-                <include layout="@layout/item_month_calendar"></include>
+                <include layout="@layout/item_month_schedule_calendar"></include>
             </LinearLayout>
 
         </LinearLayout>
