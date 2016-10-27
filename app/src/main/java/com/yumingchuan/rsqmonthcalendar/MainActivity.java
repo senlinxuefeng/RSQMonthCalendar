@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 initLayout(calendar);
             }
         });
-
+        
     }
 
     /**
@@ -681,7 +681,7 @@ public class MainActivity extends AppCompatActivity {
             if (listDayInfos.get(dayInfo.position).dayType == DayType.DAY_TYPE_NOW) {
                 currentViewGroup = (ViewGroup) v;
                 initBackground();
-                v.setBackgroundColor(getResources().getColor(R.color.weekSchedule));
+
                 Log.i("44",""+listDayInfos.get(dayInfo.position).whichWeek+":"+((dayInfo.position) % 7 - (7 - dayInfo.daysOfWeek))+":"+(currentMonthInfo.currentOpenDayOfWeek));
 
                 if ((dayInfo.position / 7 != currentMonthInfo.currentOpenWeek) || ((dayInfo.position / 7 == currentMonthInfo.currentOpenWeek) && currentMonthInfo.currentOpenDayOfWeek == (listDayInfos.get(dayInfo.position).whichWeek == 1 ? (dayInfo.position) % 7 - (7 - dayInfo.daysOfWeek) : dayInfo.position % 7))) {
@@ -757,6 +757,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
+                if (currentMonthInfo.isExpand){//只有展开才会变色
+                    v.setBackgroundColor(getResources().getColor(R.color.weekSchedule));
+                }
 
             }
         }
