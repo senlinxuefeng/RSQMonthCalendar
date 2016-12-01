@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,16 +22,20 @@ import butterknife.ButterKnife;
 public class WeekScheduleFragment extends Fragment {
 
     @BindView(R.id.lv_monthSchedule)
-    ListView lv_monthSchedule;
+    public ListView lv_monthSchedule;
+
+
 
     private Context mContext;
-    private ArrayList<ScheduleData.Todo> totalTodo;
+
+    public ArrayList<ScheduleToDo> totalTodo = new ArrayList<ScheduleToDo>();
+
+    private MonthScheduleAdapter monthScheduleAdapter;
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        totalTodo = new ArrayList<ScheduleData.Todo>();
     }
 
     @Nullable
@@ -47,8 +52,8 @@ public class WeekScheduleFragment extends Fragment {
     }
 
     private void initView(View view) {
-        //ScheduleAdapter scheduleAdapter = new ScheduleAdapter(mContext, totalTodo);
-        //lv_monthSchedule.setAdapter(scheduleAdapter);
+        monthScheduleAdapter = new MonthScheduleAdapter(mContext, totalTodo);
+        lv_monthSchedule.setAdapter(monthScheduleAdapter);
     }
 
 
@@ -56,20 +61,21 @@ public class WeekScheduleFragment extends Fragment {
         lv_monthSchedule.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (totalTodo.size() >= position && position != 0) {
-//                    Intent intent = new Intent(mContext, ScheduleDetailActivity.class);
-//                    Bundle bundle = new Bundle();
-//                    bundle.putString("scheduleId", totalTodo.get(position - 1).id);
-//                    bundle.putSerializable("scheduleTodo", totalTodo.get(position - 1));
-//                    intent.putExtras(bundle);
-//                    startActivity(intent);
-                }
+
             }
         });
     }
 
     private void initData() {
 
+    }
+
+
+    public void addAndRefreshData(List<ScheduleToDo> temoTodos) {
+
+        totalTodo.clear();
+        totalTodo.addAll(temoTodos);
+        monthScheduleAdapter.notifyDataSetChanged();
     }
 
 }
