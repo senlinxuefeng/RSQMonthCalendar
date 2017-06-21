@@ -1,0 +1,151 @@
+[
+  {
+    "type": 0,
+    "isPhone": true,
+    "userType": "",
+    "name": "移动端",
+    "detail": ""
+  },
+  {
+    "type": 1,
+    "isPhone": true,
+    "userType": "123",
+    "name": "10名以下团队成员",
+    "detail": "多人协同办公，搭上效率的直升机。"
+  },
+  {
+    "type": 1,
+    "isPhone": true,
+    "userType": "123",
+    "name": "50G云存储空间",
+    "detail": "支持ppt、doc、pdf、jpg等多种格式的文件在线预览"
+  },
+
+  {
+    "type": 1,
+    "isPhone": true,
+    "userType": "123",
+    "name": "日、周、月报一键生成",
+    "detail": "自动生成工作笔记，省时省心又省力"
+  },
+
+
+  {
+    "type": 1,
+    "isPhone": true,
+    "userType": "23",
+    "name": "番茄钟",
+    "detail": "帮你保持专注，提高效率。"
+  },
+  {
+    "type": 1,
+    "isPhone": true,
+    "userType": "23",
+    "name": "提醒时间自定义",
+    "detail": "多用重提醒，避免忘记重要的事。"
+  },
+  {
+    "type": 0,
+    "isPhone": false,
+    "userType": "",
+    "name": "web端",
+    "detail": ""
+  },
+  {
+    "type": 1,
+    "isPhone": false,
+    "userType": "23",
+    "name": "思维导图",
+    "detail": "帮你梳理思路，更有效的组织资源和管理项目"
+  },
+  {
+    "type": 1,
+    "isPhone": false,
+    "userType": "23",
+    "name": "四象限，笔记自定义",
+    "detail": "划分待办事项优先级，优化做事效率。"
+  },
+
+  {
+    "type": 1,
+    "isPhone": false,
+    "userType": "23",
+    "name": "自定义皮肤",
+    "detail": "多种颜色，任意选择。"
+  },
+
+
+  {
+    "type": 1,
+    "isPhone": false,
+    "userType": "23",
+    "name": "笔记批量导出",
+    "detail": "导出笔记，方便统计"
+  },
+
+
+  {
+    "type": 1,
+    "isPhone": false,
+    "userType": "23",
+    "name": "查看同事日程",
+    "detail": "尽情的查看同事的日程吧。（可设置权限不被查看）"
+  },
+
+  {
+    "type": 1,
+    "isPhone": false,
+    "userType": "23",
+    "name": "数据归档",
+    "detail": "全力投入新的计划中，将已完成的计划通通归档。"
+  },
+
+
+  {
+    "type": 1,
+    "isPhone": false,
+    "userType": "3",
+    "name": "计划权限自定义",
+    "detail": "定义每个角色的权限，布置任务更灵活。"
+  },
+
+  {
+    "type": 1,
+    "isPhone": false,
+    "userType": "3",
+    "name": "笔记模板自定义",
+    "detail": "自定义笔记的查看编辑权限。"
+  },
+
+  {
+    "type": 1,
+    "isPhone": false,
+    "userType": "3",
+    "name": "计划数据导出",
+    "detail": "将计划导出，整理、修改、统计更方便。"
+  },
+
+    {
+    "type": 1,
+    "isPhone": false,
+    "userType": "3",
+    "name": "日程导出",
+    "detail": "如果你需要备份自己的日程信息，可以导出日程数据。"
+  },
+
+
+     {
+    "type": 1,
+    "isPhone": false,
+    "userType": "3",
+    "name": "计划统计",
+    "detail": "清晰的统计图表，让你对计划情况一目了然。"
+  }
+
+
+
+
+
+
+
+]

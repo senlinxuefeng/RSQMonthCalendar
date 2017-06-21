@@ -1,3 +1,533 @@
-<resources>
-    <string name="app_name">RSQMonthCalendar</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="http://schemas.android.com/apk/res/android">
+
+    <string name="app_name">日事清</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="scheduleContent">内 容</string>
+
+
+    <string name="pull_to_refresh_pull_label" translatable="false">向下拉动可以刷新</string>
+    <string name="pull_to_refresh_release_label" translatable="false">松开可以刷新</string>
+    <string name="pull_to_refresh_refreshing_label" translatable="false">加载中&#8230;</string>
+    <string name="pull_to_refresh_tap_label" translatable="false">点击刷新</string>
+
+    <!-- timeclock -->
+    <string name="time_placeholder" translatable="false">--</string>
+    <string name="time_separator" translatable="false">:</string>
+    <string name="done_label">Done</string>
+    <string name="sans_serif" translatable="false">sans-serif</string>
+    <string name="radial_numbers_typeface" translatable="false">sans-serif</string>
+    <string name="select_hours">Select hours</string>
+    <string name="hour_picker_description">Hours circular slider</string>
+    <string name="select_minutes">Select minutes</string>
+    <string name="minute_picker_description">Minutes circular slider</string>
+    <string name="deleted_key"><xliff:g example="4" id="key">%1$s</xliff:g> deleted</string>
+    <string name="message_image_desc">Message Image</string>
+    <string name="recv_passthrough_message"> Receive a passthrough message. Content is \"%1$s\"</string>
+    <string name="click_notification_message"> Clicked a notification message. Content is \"%1$s\"</string>
+    <string name="arrive_notification_message"> Arrived a notification message. Content is \"%1$s\"</string>
+    <string name="set_alias_success"> Set alias \"%1$s\" success.</string>
+    <string name="set_alias_fail"> Set alias fail for %1$s.</string>
+    <string name="register_success">Register push success.</string>
+    <string name="register_fail">Register push fail.</string>
+
+    <string name="nowday">今天</string>
+    <string name="cancle">取消</string>
+    <string name="title">请选择时间</string>
+    <string name="commit">确定</string>
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="day">日</string>
+    <string name="hour">时</string>
+    <string name="minute">分</string>
+
+    <string name="select_date">选择日期</string>
+    <string name="current_date">当前日期</string>
+    <string name="select_time">选择时间</string>
+    <string name="current_time">当前时间</string>
+
+
+    <!--iconfont-->
+    <!--动态-->
+    <string name="icon_layers">\ue1d3</string>
+    <!--子任务-->
+    <string name="icon_list">\ue2aa</string>
+    <!--创建任务==1-->
+    <string name="icon_add_circle">\ue06b</string>
+    <!--更新了日期==2-->
+    <string name="icon_insert_invitation">\ue0e9</string>
+    <!--增加/移除了参与人==3-->
+    <string name="icon_person">\ue253</string>
+    <!--完成了任务==5-->
+    <string name="icon_check_circle">\ue281</string>
+    <!--重启了任务==6-->
+    <string name="icon_radio_button_unchecked">\ue25e</string>
+    <!--创建了子任务==7-->
+    <string name="icon_list_7">\ue2aa</string>
+    <!--更新了详情==8-->
+    <string name="icon_description_8">\ue288</string>
+    <!--更新了标题==9-->
+    <string name="icon_description_9">\ue288</string>
+    <!--更新了子任务内容为==10-->
+    <string name="icon_list_10">\ue2aa</string>
+    <!--删除了子任务==11-->
+    <string name="icon_list_11">\ue2aa</string>
+    <!--清空了详情==12-->
+    <string name="icon_description_12">\ue288</string>
+    <!--更新了提醒时间为==13-->
+    <string name="icon_access_alarm">\ue08c</string>
+    <!--更新了重复规则==14-->
+    <string name="icon_settings_backup_restore">\ue2cd</string>
+    <!--将子任务 "sfd" 分配给了==15-->
+    <string name="icon_list_15">\ue2aa</string>
+    <!--设置子任务日期 "sfd" 分配给了==15-->
+    <string name="icon_list_16">\ue2aa</string>
+    <!-- 完成了子任务==15-->
+    <string name="icon_list_17">\ue2aa</string>
+    <!--重启了子任务==15-->
+    <string name="icon_list_18">\ue2aa</string>
+    <!-- 清空了日期 "sfd" 分配给了==19-->
+    <string name="icon_list_19">\ue2aa</string>
+    <!--删除了他的日程==20-->
+    <string name="icon_event_busy">\ue21b</string>
+    <!--收到来自看板的日程图标-->
+    <string name="icon_ic_kanban_black">\ue901</string>
+    <!--下发的日程-->
+    <string name="icon_ic_send">\ue900</string>
+    <!--收到的日程-->
+    <string name="icon_ic_receiver">\ue07a</string>
+    <!--收纳箱-->
+    <string name="icon_inbox">\ue901</string>
+    <!--首页-->
+    <string name="icon_home">\ue88a</string>
+    <!--搜索-->
+    <string name="icon_search">\ue8b6</string>
+    <!--设置-->
+    <string name="icon_settings">\ue8b8</string>
+    <!--同事-->
+    <string name="icon_account_circle">\ue268</string>
+    <!--侧滑栏-->
+    <string name="icon_dehaze">\ue3c7</string>
+    <!--返回-->
+    <string name="icon_arrow_back">\ue200</string>
+    <!--返回-->
+    <string name="icon_content_copy">\ue14d</string>
+    <!--来自-->
+    <string name="icon_place">\ue55f</string>
+    <!--重复-->
+    <string name="icon_restore">\ue2c7</string>
+    <!--提醒-->
+    <string name="icon_notifications">\ue24a</string>
+    <!--提醒-->
+    <string name="icon_dashboard">\ue286</string>
+    <!--关注-->
+    <string name="icon_visibility">\ue306</string>
+    <!--看板图标-->
+    <string name="icon_view_carousel">\ue2fd</string>
+    <!--邮件-->
+    <string name="icon_email">\ue04c</string>
+    <!--电话-->
+    <string name="icon_call">\ue03f</string>
+
+    <string name="icon_check">\ue206</string>
+    <string name="icon_power_settings_new">\ue2c0</string>
+    <!--创建公司-->
+    <string name="icon_domain">\ue7ee</string>
+    <!--邀请同事-->
+    <string name="icon_supervisor_account">\ue8d3</string>
+    <!--关于我们-->
+    <string name="icon_error2">\ue001</string>
+    <!--意见反馈-->
+    <string name="icon_question_answer">\ue8af</string>
+    <!--意见反馈-->
+    <string name="icon_ic_inbox_black_24px">\ue902</string>
+    <!--锁-->
+    <string name="icon_lock_open">\ue898</string>
+    <!--锁-->
+    <string name="icon_chevron_right">\ue208</string>
+    <!--登录时的锁-->
+    <string name="icon_lock_outline">\ue899</string>
+    <!--登录时的人-->
+    <string name="icon_person_outline">\ue7ff</string>
+    <!--电话-->
+    <string name="icon_phone_iphone">\ue325</string>
+    <!--radio 被选中-->
+    <string name="icon_radio_button_checked">\ue25f</string>
+    <!--语音-->
+    <string name="icon_keyboard_voice">\ue31d</string>
+    <!--日期-->
+    <string name="icon_date_range">\ue916</string>
+    <!--编辑-->
+    <string name="icon_create">\ue074</string>
+
+
+    <!--国际化中文字符的抽离start-->
+    <string name="rsq_rishiqing">日事清</string>
+    <string name="rsq_note">笔记</string>
+    <string name="rsq_app">应用</string>
+    <string name="rsq_schedule">日程</string>
+    <string name="rsq_work">工作</string>
+
+    <string name="rsq_none">无</string>
+    <string name="rsq_quadrant">象限</string>
+    <string name="rsq_comment_hint">说点什么</string>
+
+    <string name="rsq_guide_1_title">日事清 协作管理工具的先行者</string>
+    <string name="rsq_guide_2_title_1">做最好的安排</string>
+    <string name="rsq_guide_3_title_1">去轻松工作</string>
+    <string name="rsq_guide_4_title_1">你理想的工作方式</string>
+
+    <string name="rsq_login">登录</string>
+    <string name="rsq_register">注册</string>
+    <string name="rsq_emailOrPhoneNumber">邮箱或手机号</string>
+    <string name="rsq_pwd">密码</string>
+    <string name="rsq_login_forget_pwd">忘记密码?</string>
+    <string name="rsq_login_creat_count">创建账号</string>
+    <string name="rsq_login_set_server">更改服务器</string>
+    <string name="rsq_fast_login">快速登录</string>
+    <string name="rsq_phone_num">手机号</string>
+    <string name="rsq_register_getVerificationCode">获取验证码</string>
+    <string name="rsq_register_haveAccount">我已有账号</string>
+    <string name="rsq_input_verificationCode">输入验证码</string>
+    <string name="rsq_send">发送</string>
+    <string name="rsq_next">下一步</string>
+    <string name="rsq_register_input_name">姓名</string>
+    <string name="rsq_forget_pwd">忘记密码</string>
+    <string name="rsq_new_pwd">新密码</string>
+    <string name="rsq_sure_pwd">确认密码</string>
+    <string name="rsq_yes">确定</string>
+    <string name="rsq_set_server">设置登录服务器</string>
+    <string name="rsq_officialServer">官方服务器</string>
+    <string name="rsq_custom_server_address">输入服务器地址</string>
+    <string name="rsq_save">保存</string>
+    <string name="rsq_about">关于</string>
+    <string name="rsq_check_update">检查更新</string>
+    <string name="rsq_task">任务</string>
+    <string name="rsq_title">标题</string>
+    <string name="rsq_date">日期</string>
+    <string name="rsq_member">成员</string>
+    <string name="rsq_at_someone">选择@的成员</string>
+    <string name="rsq_select_all">全选</string>
+    <string name="rsq_search">搜索</string>
+    <string name="rsq_only_to_member">仅成员可见</string>
+    <string name="rsq_colleague">同事</string>
+    <string name="rsq_phone">手机</string>
+    <string name="rsq_email">邮件</string>
+    <string name="rsq_birth">生日</string>
+    <string name="rsq_position">职位</string>
+    <string name="rsq_setting">设置</string>
+    <string name="rsq_corpus_name">文集名称</string>
+    <string name="rsq_option">选项</string>
+    <string name="rsq_common_note">普通笔记</string>
+    <string name="rsq_delete_corpus">删除文集</string>
+    <string name="rsq_create_company">创建公司</string>
+    <string name="rsq_company_name">公司名</string>
+    <string name="rsq_create">创建</string>
+    <string name="rsq_check_phone">验证手机</string>
+    <string name="rsq_finish">完成</string>
+    <string name="rsq_file">文件</string>
+    <string name="rsq_inbox">收纳箱</string>
+    <string name="rsq_inbox_detail">收集想法·接纳任务</string>
+    <string name="rsq_invite_colleague">邀请同事</string>
+    <string name="rsq_about_us">关于我们</string>
+    <string name="rsq_feedback">在线咨询</string>
+    <string name="rsq_your_idea">写下想法</string>
+    <string name="rsq_no_network">网络不可用，无法保存修改数据</string>
+    <string name="add_colleague">添加同事</string>
+    <string name="rsq_address_book">通讯录</string>
+    <string name="rsq_add_colleague_from_address_book">从手机通讯录添加同事</string>
+    <string name="rsq_add_colleague_by_phone">通过手机号添加同事</string>
+    <string name="rsq_add_colleague_from_may_know">从你可能认识的人中添加同事</string>
+    <string name="rsq_add_colleague_by_email">通过邮箱添加同事</string>
+    <string name="rsq_add_colleague_by_wx">通过微信邀请</string>
+    <string name="rsq_add_colleague_by_invite">让同事通过微信加入公司</string>
+    <string name="rsq_add_colleague_by_qq">通过QQ邀请</string>
+    <string name="qq">让同事通过QQ加入公司</string>
+    <string name="rsq_add_colleague">添加同事</string>
+    <string name="rsq_add">添加</string>
+    <string name="rsq_new_note">新日志</string>
+    <string name="rsq_body">正文</string>
+    <string name="rsq_notification">通知</string>
+    <string name="rsq_login_bind">登录并绑定</string>
+    <string name="rsq_create_account">创建账号</string>
+    <string name="rsq_new_task">新任务</string>
+    <string name="rsq_task_title">任务标题</string>
+    <string name="rsq_tilte">标题</string>
+    <string name="rsq_plan_name">计划名称</string>
+    <string name="rsq_plan_sync_to_schedule">计划日程任务同步</string>
+    <string name="rsq_star_plan">星标计划</string>
+    <string name="rsq_delete_plan">删除计划</string>
+    <string name="rsq_download">下载</string>
+    <string name="rsq_personnel">人员</string>
+    <string name="rsq_search_content">搜索内容</string>
+    <string name="rsq_select_pic">选择图片</string>
+    <string name="rsq_set_email">设置邮箱</string>
+    <string name="rsq_update_email">更改邮箱</string>
+    <string name="rsq_update_pwd">修改密码</string>
+    <string name="rsq_old_pwd">旧密码</string>
+    <string name="rsq_new_pwd_more_6">新密码(不少于6位)</string>
+    <string name="rsq_update_phone_num">修改手机号</string>
+    <string name="rsq_yes_update">确认修改</string>
+    <string name="rsq_my_account">我的账号</string>
+    <string name="rsq_icon">头像</string>
+    <string name="rsq_name">姓名</string>
+    <string name="rsq_personal_info">个人信息</string>
+    <string name="rsq_login_account">登录账号</string>
+    <string name="rsq_wx">微信</string>
+    <string name="rsq_bind">绑定</string>
+    <string name="rsq_set_my_accout">设置您的账号信息</string>
+    <string name="rsq_account_pwd">账号密码</string>
+    <string name="rsq_manager_account_pwd">管理您的账号密码</string>
+    <string name="rsq_preference_setting">偏好设置</string>
+    <string name="rsq_preference_common">设置您的使用习惯</string>
+    <string name="rsq_help">帮助中心</string>
+    <string name="rsq_learn_more">了解更多日事清用法</string>
+    <string name="rsq_appraise_app">评价应用</string>
+    <string name="rsq_share_rsq">将日事清分享给你的朋友</string>
+    <string name="rsq_new_schedule_public_self">日程新建任务默认仅成员可见</string>
+    <string name="rsq_plan_auto_to_self">计划任务自动分配给自己</string>
+    <string name="rsq_today">今</string>
+    <string name="rsq_clear_date">清除日期</string>
+    <string name="rsq_one_day">单日</string>
+    <string name="rsq_more_day">多日</string>
+    <string name="rsq_start_end">起止</string>
+    <string name="rsq_recycle">重复</string>
+    <string name="rsq_sunday">日</string>
+    <string name="rsq_one">一</string>
+    <string name="rsq_two">二</string>
+    <string name="rsq_three">三</string>
+    <string name="rsq_four">四</string>
+    <string name="rsq_five">五</string>
+    <string name="rsq_six">六</string>
+    <string name="rsq_cast_to_day_view">切换日视图</string>
+    <string name="rsq_only_public_to_self">仅成员可见</string>
+    <string name="rsq_today_2">今天</string>
+    <string name="rsq_tomorrow">明天</string>
+    <string name="rsq_the_day_after_tomorrow">后天</string>
+    <string name="rsq_next_week">下周</string>
+    <string name="rsq_next_month">下月</string>
+    <string name="rsq_other">其他</string>
+    <string name="rsq_find_new_version">发现新版本</string>
+    <string name="rsq_IE">重要且紧急</string>
+    <string name="rsq_IU">重要但不紧急</string>
+    <string name="rsq_UE">紧急但不重要</string>
+    <string name="rsq_UU">不重要不紧急</string>
+    <string name="rsq_remind">提醒</string>
+    <string name="rsq_remind_time">时间</string>
+    <string name="rsq_close_remind">关闭提醒</string>
+    <string name="rsq_repeat_end">重复结束于</string>
+    <string name="rsq_set_icon">设置头像</string>
+    <string name="rsq_camera">照相</string>
+    <string name="rsq_gallery">图片库</string>
+    <string name="rsq_select_plan">选择计划</string>
+    <string name="rsq_plan">计划</string>
+    <string name="rsq_card">卡片</string>
+    <string name="rsq_select_card">选择卡片</string>
+    <string name="rsq_loading">正在加载……</string>
+    <string name="rsq_no_corpus">还没有文集，赶紧创建一个吧！</string>
+    <string name="rsq_album">相册</string>
+    <string name="rsq_new_card">新建卡片</string>
+    <string name="rsq_add_task">添加任务</string>
+    <string name="rsq_add_2">添加</string>
+    <string name="rsq_attachment">附件</string>
+    <string name="rsq_refuse_notification">接收任务通知</string>
+    <string name="rsq_add_sub_task">添加子任务</string>
+    <string name="rsq_dynamic">动态</string>
+    <string name="rsq_show_operate_record">显示操作记录</string>
+    <string name="rsq_priority">优先级</string>
+    <string name="rsq_only_creater_edit">仅创建者可编辑</string>
+    <string name="rsq_new_create_note">新建笔记</string>
+    <string name="rsq_new_create_plan">新建计划</string>
+    <string name="rsq_new_create_task">新建任务</string>
+    <string name="rsq_new_create_schedule">新建日程</string>
+    <string name="rsq_per">每</string>
+    <string name="rsq_repeat_to_someday">重复任务直到</string>
+    <string name="rsq_cast_month_view">切换视图</string>
+    <string name="rsq_no_schedule_remind">还没有任务，赶紧创建一条吧！</string>
+    <string name="rsq_copy_card">复制卡片</string>
+    <string name="rsq_plan_setting">计划设置</string>
+    <string name="rsq_manager_member">管理成员</string>
+    <string name="rsq_edit_card">编辑卡片</string>
+    <string name="rsq_move_card">移动卡片</string>
+    <string name="rsq_delete_card">删除卡片</string>
+    <string name="rsq_delete_task">删除任务</string>
+    <string name="rsq_copy_task">复制任务</string>
+    <string name="rsq_move_task">移动任务</string>
+    <string name="rsq_new_create_file">新建文件夹</string>
+    <string name="rsq_folder_name">文件夹名称</string>
+    <string name="rsq_cancel">取消</string>
+    <string name="rsq_corpus_setting">文集设置</string>
+    <string name="rsq_delete">删除</string>
+    <string name="rsq_upload_attachment">上传附件</string>
+    <string name="rsq_take_photo">拍照</string>
+    <string name="rsq_pic">图片</string>
+    <string name="rsq_other_file">其他文件</string>
+    <string name="rsq_rename">重命名</string>
+    <string name="rsq_delete_name">删除文件夹</string>
+    <string name="folder_move_lable">移动</string>
+    <string name="rsq_call_phone">打电话</string>
+    <string name="rsq_send_message">发短信</string>
+    <string name="rsq_delete_only_task">仅删除此任务</string>
+    <string name="rsq_delete_all_task">删除所有重复任务</string>
+    <string name="rsq_delete_all_from_today">删除此任务及之后所有任务</string>
+    <string name="rsq_edit_card_name">编辑卡片名称</string>
+    <string name="rsq_card_name">卡片名称</string>
+    <string name="rsq_login_out">是否要退出账号?</string>
+    <string name="rsq_reply">回复</string>
+    <string name="rsq_update_nickname">修改昵称</string>
+    <string name="rsq_nickname">昵称</string>
+    <string name="rsq_sub_task">子计划</string>
+
+    <!--国际化中文字符的抽离end-->
+
+
+    <string name="error_please_check_network">请检查网络。</string>
+    <string name="error_timeout">请求超时，网络不好或者服务器不稳定。</string>
+    <string name="error_not_found_server">未发现指定服务器，清切换网络后重试。</string>
+    <string name="error_url_error">URL错误。</string>
+    <string name="error_not_found_cache">没有找到缓存.</string>
+    <string name="error_system_unsupport_method">系统不支持的请求方法。</string>
+    <string name="error_parse_data_error">解析数据时发生错误。</string>
+    <string name="error_unknow">未知错误。</string>
+    <string name="error_response_code">服务器响应码%1$d</string>
+    <string name="error_response_code_dex">服务器响应码%1$d，如果你们服务器在这种情况下也返回数据你可以处理。</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!--用户引导-->
+    <string name="first_show_lable_1">第一次使用日事清？</string>
+    <string name="first_show_lable_2">我们准备了新手引导，帮您快速玩儿转日事清。</string>
+    <string name="first_show_cancle">自己探索</string>
+    <string name="first_show_sure">现在开始</string>
+    <string name="guide_show_text_1">九点有个会要开，忘了就惨了。</string>
+    <string name="guide_show_text_2">选择会议的紧急程度。</string>
+    <string name="guide_show_text_3">要准备会议材料，现在已经八点了。</string>
+    <string name="guide_show_text_4">创建到日程列表。</string>
+    <string name="default_create_name">上午九点开会</string>
+    <string name="guide_show_text_5">已经完成了，勾上吧</string>
+    <string name="guide_end_but_text">开始使用</string>
+    <string name="guide_end_lable_1">您已完成新手引导</string>
+    <string name="guide_end_lable_2">如在使用中发现问题，请在侧栏-在线咨询中，咨询日事清小秘书。</string>
+    <string name="guide_del_lable_1">如何找回已删除文件</string>
+    <string name="guide_del_lable_2">登录日事情web端www.rishiqing.com，在回收站中可恢复最近已删除的文件。</string>
+    <string name="guide_del_sure">我知道了</string>
+    <string name="guide_del_cancle">不再提醒</string>
+
+    <!--web-->
+    <string name="web_g_text">Web端</string>
+    <string name="web_title">日事情web端</string>
+    <string name="web_title_desc">请用电脑访问\nhttps://www.rishiqing.com\n桌面上最好的个人管理与团队协作软件</string>
+    <string name="web_time_desc">你从未见过如此优秀的任务管理方式\n计划 执行 一步到位</string>
+    <string name="web_plan_desc">来自丰田的项目管理解决方案\n每一块看板都是你的野心 </string>
+    <string name="web_note_desc">工作日报 周报 月报 自动生成\n用正确的姿势写笔记 </string>
+    <string name="web_rubbish_desc">你的后悔药\n全年免费 随用随取  </string>
+    <string name="web_bottom_desc">请用电脑访问\nhttps://www.rishiqing.com\n桌面上最好的个人管理与团队协作软件</string>
+    <string name="pop_add_upload_lable">上传文件</string>
+    <string name="pop_add_folder_lable">新建文件夹</string>
+    <string name="folder_action_cancle">取消</string>
+    <string name="folder_action_create">新建文件夹</string>
+    <string name="folder_action_copy">复制</string>
+    <string name="folder_action_move">移动</string>
+    <string name="folder_action_pause">粘贴</string>
+    <string name="folder_action_move_succ">移动成功</string>
+    <string name="folder_action_copy_succ">复制成功</string>
+    <string name="folder_action_copy_sel">复制到</string>
+    <string name="folder_action_move_sel">移动到</string>
+    <string name="folder_text">文件夹</string>
+
+    <!--corpus-->
+    <string name="corpus_setting_rename">重命名</string>
+    <string name="corpus_setting_del">删除</string>
+    <string name="corpus_setting_del_text">删除文集</string>
+    <string name="corpus_note_del_text">删除笔记本</string>
+    <string name="corpus_setting_del_succ">笔记本删除成功</string>
+    <string name="corpus_rename_lable">修改笔记本名称</string>
+    <string name="corpus_rename_hint">笔记本名称</string>
+    <string name="corpus_setting_update_succ">修改成功</string>
+
+    <string name="file_rename_text">修改文件名称</string>
+    <string name="file_rename_hint">输入新名称</string>
+    <string name="del_corpus_but">删除文集</string>
+    <string name="quit_corpus_but">退出文集</string>
+    <string name="change_view">切换</string>
+    <string name="picker_view_title">滚轮编辑</string>
+    <string name="week_view_title">滑块编辑</string>
+    <string name="time_checkout_msg">结束时间必须大于开始时间</string>
+    <string name="time_label">时间</string>
+    <string name="noti_info">请先设置时间再设置提醒</string>
+    <string name="set_all_day">设为全天</string>
+    <string name="noti_label">提醒</string>
+    <string name="time_set_remind_title">自定义提醒</string>
+    <string name="time_set_start_now">任务开始时</string>
+    <string name="time_set_end_now">任务结束时</string>
+    <string name="all_day_clock_label">%1$s    全天</string>
+    <string name="clock_during_time_label">%1$s     %2$s-%3$s</string>
+    <string name="create_schedule">新建日程</string>
+    <string name="start_label_text">开始时间</string>
+    <string name="end_label_text">结束时间</string>
+    <string name="reset_label_text">清空</string>
+    <string name="person_attribute">个人</string>
+    <string name="company_attribute">公司</string>
+
+    <item name="sidebar" type="id"></item>
+    <item name="curPosition" type="id"></item>
+
+
+    <string-array name="time_line_texts">
+        <item>任务开始时</item>
+        <item>开始前5分钟</item>
+        <item>开始前15分钟</item>
+        <item>开始前30分钟</item>
+        <item>开始前1小时</item>
+        <!--<item>结束前1小时</item>-->
+        <item>自定义提醒时间</item>
+    </string-array>
+
+
+    <string-array name="time_line_values">
+        <item>begin_0_hour</item>
+        <item>begin_-5_min</item>
+        <item>begin_-15_min</item>
+        <item>begin_-30_min</item>
+        <item>begin_-1_hour</item>
+        <!--<item>end_-1_hour</item>-->
+        <item>set</item>
+    </string-array>
+    <string-array name="time_remind_set_left_texts">
+        <item>任务开始前</item>
+        <item>任务开始后</item>
+        <item>任务结束前</item>
+        <item>任务结束后</item>
+    </string-array>
+
+
+    <string-array name="time_remind_set_left_texts_names">
+        <item>开始前</item>
+        <item>开始后</item>
+        <item>结束前</item>
+        <item>结束后</item>
+    </string-array>
+
+
+    <string-array name="time_remind_set_left_texts_values">
+        <item>begin_-</item>
+        <item>begin_</item>
+        <item>end_-</item>
+        <item>end_</item>
+    </string-array>
+
+    <string-array name="time_remind_set_right_texts">
+        <item>分钟</item>
+        <item>小时</item>
+    </string-array>
+
+    <string-array name="time_remind_set_right_texts_values">
+        <item>_min</item>
+        <item>_hour</item>
+    </string-array>
+
+
 </resources>

@@ -1,8 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="weekSchedule">#e7e7e7</color>
+    <!--新版的主要的九种颜色-->
+    <color name="main_gray_1">#788fa7</color>
+    <color name="main_gray_2">#a3b2c2</color>
+    <color name="main_gray_3">#bbc7d3</color>
+    <color name="main_black_1">#333333</color>
+    <color name="main_black_2">#666666</color>
+    <color name="main_black_3">#a3a3a3</color>
+    <color name="main_blue">#55a8fd</color>
+    <color name="main_orange">#f7bf8a</color>
+    <color name="main_red">#ff9393</color>
+    <color name="tomato_red_1">#FB8D8D</color>
+    <color name="tomato_red_2">#FF6A6A</color>
+
+    <color name="bg_color_1">#55a8fd</color>
+    <color name="bg_color">#55a8fd</color>
+
+    <!--输入框内容的颜色-->
+    <color name="content_color">#747474</color>
+    <!--输入框提示的颜色-->
+    <color name="remind_color">#BABABA</color>
+    <!--textView字体的颜色-->
+    <color name="black_26">#42000000</color>
+    <color name="black_34">#56000000</color>
+    <color name="black_36">#5b000000</color>
+    <color name="black_54">#8a000000</color>
+    <color name="black_66">#a8000000</color>
+    <color name="black_87">#dd000000</color>
+    <color name="black_51">#515151</color>
+    <color name="black_98">#989898</color>
+
+    <color name="black_33">#333333</color>
+    <color name="black_a3">#a3a3a3</color>
+    <color name="black_da">#dadada</color>
+    <color name="black_a2">#a2a2a2</color>
+    <color name="black_3D3D3D">#3D3D3D</color>
+    <color name="black_B1B1B1">#B1B1B1</color>
+
+
+    <color name="bg_pay_1">#FFDEDEDE</color>
+    <color name="bg_pay_2">#FFADB2B7</color>
+
+    <color name="bg_db">#DBDBDB</color>
+    <color name="bg_e7">#e7e7e7</color>
+
+
+    <color name="calendar_num">#788fa7</color>
+    <color name="calendar_num_gray">#d1d1d1</color>
+    <color name="calendar_num_red">#f7bf8a</color>
+    <color name="calendar_item_bg">#f0f8ff</color>
+
+
+    <color name="bg_color_40_per">#4055a8fd</color>
+    <color name="bg_color_selected_no">#bbc7d3</color>
+
     <color name="white">#ffffff</color>
+    <color name="white_0">#00ffffff</color>
+    <color name="white_selected">#08000000</color>
+    <color name="white_86">#dbffffff</color>
+
+    <color name="background_color">#F6F7F8</color>
+    <color name="background_color_fc">#fcfcfc</color>
+    <color name="bg_f5">#f5f5f5</color>
+
+    <color name="delay_color">#EA4545</color>
+    <color name="gray_blue">#DDDDFF</color>
+    <color name="mask_color">#08000000</color>
+
+
+    <color name="sliding_bg">#FCFCFC</color>
+
+    <color name="sliding_bg_select">#0091F0</color>
+    <color name="sliding_bg_selected">#009BFF</color>
+
+
+    <color name="colorPrimary">#0096F6</color>
+    <color name="colorPrimaryDark">#ff0171c9</color>
+    <color name="colorAccent">#0096F6</color>
+    <color name="colorControlNormal">#FF78909C</color>
+    <color name="colorControlActivated">#0096F6</color>
+    <color name="colorSwitchThumbNormal">#FF78909C</color>
+    <color name="colorAccentHalf">#0096F6</color>
+    <color name="colorPrimaryHalf">#0096F6</color>
+    <color name="colorControlNormalHalf">#9078909C</color>
+    <color name="colorControlActivatedHalf">#0096F6</color>
+
+
+    <color name="quadrant_background">#EBEEF0</color>
+
+    <color name="transparent">#ffffffff</color>
+    <color name="black">#000000</color>
+    <color name="blue">#0000ff</color>
+    <color name="red">#ff0000</color>
+    <color name="purple">#1C86EE</color>
+    <color name="green">#39D405</color>
+    <color name="org_yellow">#FF9933</color>
+    <color name="darkgray">#4B4B4B</color>
+    <color name="gray">#808080</color>
+    <color name="edittext">#e3e3e3</color>
+    <color name="yellow">#FFFF33</color>
+    <color name="actionbar_selected">#FFFF8C</color>
+    <color name="watermark">#FF33FF</color>
+    <color name="text_color">#333333</color>
+
+    <!-- line -->
+    <color name="line_gray">#EBEEF0</color>
+    <color name="line_E0E0E0">#E0E0E0</color>
+    <color name="line_diver">#dadada</color>
+    <color name="bg_bg">#60000000</color>
+    <color name="hour_line_color">#DADADA</color>
+    <color name="line_background">#ffcccccc</color>
+    <color name="line_gray_new">#e7e7e7</color>
+
+
+    <color name="circle_background">#fff2f2f2</color>
+    <color name="done_text_color_normal">#ff333333</color>
+    <color name="done_text_color_disabled">#ffcccccc</color>
+    <color name="numbers_text_color">#8c8c8c</color>
+    <color name="ampm_text_color">#8c8c8c</color>
+    <color name="transparent_black">#7F000000</color>
+
+
+    <color name="shadow_end_color">#03000000</color>
+    <color name="shadow_start_color">#ff000000</color>
+
+    <color name="light_gray">#99a4b7</color>
+
+    <color name="spinnerPrimary">#F9F9F9</color>
+
+    <color name="log_fragment">#bbbbbb</color>
+    <color name="log_diver">#e5e5e5</color>
+    <color name="widget_background">#FDFDFF</color>
+    <color name="schedule_background">#F6F7F8</color>
+
+
+    <color name="griditems_bg">#ffe8ecef</color>
+
+    <color name="color1">#ff0f9d58</color>
+    <color name="color2">#ffdb4437</color>
+    <color name="color3">#ff4285f4</color>
+    <color name="color4">#fff4b400</color>
+
+
+    <color name="IE">#ffcdcb</color>
+    <color name="IE_border">#FCB2A5</color>
+    <color name="IU">#FFF6E9</color>
+    <color name="IU_border">#EFE48C</color>
+    <color name="UE">#DFF4FF</color>
+    <color name="UE_border">#C7E8FF</color>
+    <color name="UU">#CFF5C3</color>
+    <color name="UU_border">#9AE7A0</color>
+
+    <color name="IE_1">#FB8D8D</color>
+    <color name="IU_1">#FBCB8D</color>
+    <color name="UE_1">#8DCCFB</color>
+    <color name="UU_1">#5CCCB9</color>
+
+
+    <color name="monthCalendarFestival">#008ce6</color>
+    <color name="monthCalendarBackground">#0096f6</color>
+
+    <color name="repeatSelected">#38aef9</color>
+    <color name="webviewBackground">#f3f5f8</color>
+
+
+    <!--字体颜色值-->
+    <color name="fontColorGray">#999999</color>
+    <color name="fontColorGreen">#209361</color>
+    <color name="fontColorRed">#e33737</color>
+    <color name="fontColorPink">#e28b41</color>
+    <color name="fontColorYellow">#c8a732</color>
+    <color name="fontColorBlue">#418caf</color>
+    <color name="fontColorPurple">#aa8773</color>
+    <color name="fontColorBlack">#333333</color>
+
+    <color name="gray_pressed">#666667</color>
+    <color name="last_msg_tv_color">#ffaaaaaa</color>
+
+    <color name="text1">#59B29C</color>
+    <color name="weekSchedule">#f5f5f5</color>
+
+
+    <color name="label_1">#ED8A8A</color>
+    <color name="label_2">#6D4E4E</color>
+    <color name="label_3">#8AED90</color>
+    <color name="label_4">#8AABED</color>
+    <color name="label_5">#DEDEDE</color>
+    <color name="label_6">#766A6A</color>
+    <color name="label_7">#C38AED</color>
+    <color name="label_8">#DCED8A</color>
+    <color name="label_9">#EDB48A</color>
+    <color name="label_10">#B5B5B5</color>
+    <color name="label_11">#ED8AE0</color>
+    <color name="label_12">#8AB7ED</color>
+    <color name="label_13">#8AEDE0</color>
+    <color name="label_14">#BB2626</color>
+    <color name="label_15">#000000</color>
+
+
+    <!--first show-->
+    <color name="f_label_color_0">#565353</color>
+    <color name="f_label_color_1">#0099FF</color>
+    <color name="f_label_color_2">#5F5F5F</color>
+    <color name="f_label_color_bg">#FFFFFF</color>
+    <color name="iron">#CACACA</color>
+    <color name="file_text_color">#788FA7</color>
+    <color name="file_icon_color_week">#FFDA94</color>
+    <color name="file_icon_color_day">#FF5C59</color>
+    <color name="file_icon_color_mouth">#A9EC98</color>
+
+
+    <color name="red_normal">#FD5555</color>
+    <color name="red_pressed">#FD6666</color>
+
+
+    <color name="yellow_normal">#FDD155</color>
+    <color name="yellow_pressed">#FDD165</color>
+    <color name="th_black_6">#666666</color>
+    <color name="gray_c3">#C3C3C3</color>
+    <color name="gray_4a">#4A4A4A</color>
+    <color name="content_back_color">#f5f5f5</color>
+    <color name="time_text_color_60">#606060</color>
+    <color name="reset_text_color">#FF7A7A</color>
+    <color name="concrete">#F2F2F2</color>
+    <color name="ie_color">#FDB2A5</color>
+    <color name="iu_color">#F0E48D</color>
+    <color name="ue_color">#C7E9FF</color>
+    <color name="uu_color">#9AE7A0</color>
+
+    <color name="ie_shallow_color">#FFCDCB</color>
+    <color name="iu_shallow_color">#FFF6E9</color>
+    <color name="ue_shallow_color">#DFF4FF</color>
+    <color name="uu_shallow_color">#CFF6C3</color>
+
+
+    <!--app7.0-->
+    <color name="IE_F9D7DA">#F9D7DA</color>
+    <color name="IU_F9EDD7">#F9EDD7</color>
+    <color name="UE_D5EAFF">#D5EAFF</color>
+    <color name="UU_D0EDD1">#D0EDD1</color>
+
+    <color name="IE_FF7A7A">#FF7A7A</color>
+    <color name="IU_DEA13A">#DEA13A</color>
+    <color name="UE_69ACEF">#69ACEF</color>
+    <color name="UU_6BC859">#6BC859</color>
+
+
 </resources>

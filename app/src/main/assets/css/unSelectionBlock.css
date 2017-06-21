@@ -1,0 +1,127 @@
+/*
+* @Author: qin yang
+* @Date:   2016-07-29 10:46:38
+* @Last Modified by:   qin yang
+* @Last Modified time: 2017-06-10 16:39:44
+*/
+.editor-style [data-unselection-select] .unselection-content {
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
+  border: 1px solid #bababa !important; 
+}
+.editor-style [data-unselection-select] img {
+  box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.4);
+}
+[data-img] {
+  padding: 0px 5px !important;
+}
+.editor-style .unselection-wrapper {
+  text-align: center;
+}
+.editor-style .unselection-wrapper .unselection-inline-wrapper {
+  display: inline-block;
+  width: 100%; 
+}
+.editor-style .unselection-wrapper .unselection-content {
+  cursor: default; 
+}
+
+.editor-style .unselection-wrapper [data-name] {
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: right 0.2s;
+}
+
+.editor-style .unselection-wrapper [data-name]:before {
+  content: attr(data-name);
+}
+
+.editor-style .unselection-wrapper .unselection-attach-operation {
+  display: none;
+}
+
+.editor-style .unselection-wrapper .unselection-attach {
+  display: inline-block;
+  height: 36px;
+  width: 95%;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  border: 1px solid #e9e9e9;
+  position: relative;
+  text-align: left;
+  color: #575757;
+  font-size: 0px;
+  white-space: nowrap; 
+}
+.editor-style .unselection-wrapper .unselection-attach .unselection-attach-icon {
+  display: inline-block;
+  height: 100%;
+  font-size: 20px;
+  line-height: 33px;
+  width: 30px;
+  text-align: center; 
+}
+.editor-style .unselection-wrapper .unselection-attach [data-name] {
+  position: absolute;
+  left: 35px;
+  right: 0px;
+  bottom: 0px;
+  top: 0px;
+  line-height: 36px;
+}
+.editor-style .unselection-wrapper .unselection-attach [data-size] {
+  position: absolute;
+  display: inline-block;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  font-size: 12px;
+  line-height: 36px;
+  padding-right: 10px;
+}
+.editor-style .unselection-wrapper .unselection-attach [data-size]:before {
+  content: attr(data-size);
+}
+.editor-style .unselection-wrapper .unselection-global-link {
+  display: inline-block;
+  height: 45px;
+  width: 90%;
+  background-color: #f9f9f9;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  position: relative;
+  text-align: left;
+  color: #575757;
+  font-size: 0px;
+  white-space: nowrap;
+}
+.editor-style .unselection-wrapper .unselection-global-link [data-name] {
+  display: inline-block;
+  line-height: 45px;
+  vertical-align: middle;
+}
+.editor-style .unselection-wrapper .unselection-global-link [data-global-link-type] {
+  display: inline-block;
+  height: 100%;
+  width: 45px;
+  vertical-align: middle;
+}
+.editor-style .unselection-wrapper .unselection-global-link [data-global-link-type="todo"], .editor-style .unselection-wrapper .unselection-global-link [data-global-link-type="plan"] {
+  background: url(https://res-front-cdn.rishiqing.com/common/img/todo/tick.png) no-repeat;
+  background-position: 14px;
+}
+.editor-style .unselection-wrapper .unselection-global-link [data-global-link-type="doc"] {
+  background: url(https://res-front-cdn.rishiqing.com/common/img/doc/docItem.png) no-repeat;
+  background-position: 14px;
+}
+.editor-style .unselection-wrapper .unselection-global-link [data-global-link-type="file"] {
+  font-size: 20px;
+  line-height: 42px;
+  text-align: center;
+}
+.editor-style .unselection-wrapper[data-global-link] {
+  line-height: 10px;
+}
+.editor-style .unselection-wrapper inherit {
+  display: block; 
+}

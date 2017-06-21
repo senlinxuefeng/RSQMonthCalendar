@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<item_card_task android:state_selected="true" android:drawable="@drawable/hoverscroll_edge"></item_card_task>-->
+    <item android:state_selected="true" android:drawable="@drawable/shape_circle_quadrant_has_seclected"
+        ></item>
+
+    <item android:state_selected="false" android:drawable="@drawable/shape_circle_quadrant_no_seclected"
+        ></item>
+
+</selector>

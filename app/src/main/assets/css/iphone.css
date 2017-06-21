@@ -1,0 +1,16 @@
+/*
+* @Author: qin yang
+* @Date:   2016-07-08 12:54:29
+* @Last Modified by:   qin yang
+* @Last Modified time: 2016-07-08 12:54:56
+*/
+body img{
+  max-width:95% ;
+  height:auto !important;
+}
+
+*{
+  outline: 0px solid transparent; 
+  -webkit-tap-highlight-color: rgba(0,0,0,0); 
+  -webkit-touch-callout: none;
+}

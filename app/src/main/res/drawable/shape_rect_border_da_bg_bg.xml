@@ -5,7 +5,7 @@
     <!-- android:radius 弧形的半径 -->
     <stroke
         android:width="0.25dp"
-        android:color="#55a8fd" />
+        android:color="@color/bg_color" />
     <!-- 填充的颜色 -->
     <solid android:color="#f0f8ff"></solid>
 

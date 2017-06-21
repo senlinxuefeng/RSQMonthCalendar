@@ -1,0 +1,167 @@
+.editor-style {
+  font-size: 16px;
+  font-family: arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  outline: none;
+  word-wrap: break-word;
+}
+.editor-style > :first-child {
+  margin-top: 0 !important;
+}
+.editor-style a {
+  color: #4298BA;
+  text-decoration: none;
+  word-break: break-all;
+}
+.editor-style a:visited {
+  color: #4298BA;
+}
+.editor-style a:hover {
+  color: #0F769F;
+}
+.editor-style a:active {
+  color: #9E792E;
+}
+.editor-style a:hover, .editor-style a:active {
+  outline: 0;
+}
+.editor-style h1, .editor-style h2, .editor-style h3, .editor-style h4, .editor-style h5, .editor-style h6 {
+  font-weight: normal;
+  margin: 0;
+  color: #000000;
+}
+.editor-style h1 {
+  font-size: 24px;
+}
+.editor-style h2 {
+  font-size: 22px;
+}
+.editor-style h3 {
+  font-size: 20px;
+}
+.editor-style h4 {
+  font-size: 18px;
+}
+.editor-style h5 {
+  font-size: 16px;
+}
+.editor-style h6 {
+  font-size: 16px;
+}
+.editor-style p, .editor-style div {
+  word-wrap: break-word;
+  margin: 0 0 0px 0;
+  color: #333;
+  word-wrap: break-word;
+}
+.editor-style b, .editor-style strong {
+  font-weight: bold;
+}
+.editor-style i, .editor-style em {
+  font-style: italic;
+}
+.editor-style u {
+  text-decoration: underline;
+}
+.editor-style strike, .editor-style del {
+  text-decoration: line-through;
+}
+.editor-style ul, .editor-style ol {
+  list-style: disc outside none;
+  margin: 15px 0;
+  padding: 0 0 0 40px;
+  line-height: 1.6;
+}
+.editor-style ul ul, .editor-style ul ol, .editor-style ol ul, .editor-style ol ol {
+  padding-left: 30px;
+}
+.editor-style ul ul, .editor-style ol ul {
+  list-style: circle outside none;
+}
+.editor-style ul ul ul, .editor-style ol ul ul {
+  list-style: square outside none;
+}
+.editor-style ul li {
+  list-style-type: disc;
+}
+.editor-style ol {
+  list-style: decimal;
+}
+.editor-style ol li {
+  list-style: decimal;
+}
+.editor-style blockquote {
+  border-left: 6px solid #ddd;
+  padding: 5px 0 5px 10px;
+  margin: 15px 0 15px 15px;
+}
+.editor-style blockquote > :first-child {
+  margin-top: 0;
+}
+.editor-style code {
+  display: inline-block;
+  padding: 0 4px;
+  margin: 0 5px;
+  background: #eeeeee;
+  border-radius: 3px;
+  font-size: 13px;
+  font-family: 'monaco', 'Consolas', "Liberation Mono", Courier, monospace;
+}
+.editor-style pre {
+  padding: 10px 5px 10px 10px;
+  margin: 15px 0;
+  display: block;
+  line-height: 18px;
+  background: #F0F0F0;
+  border-radius: 3px;
+  font-size: 13px;
+  font-family: 'monaco', 'Consolas', "Liberation Mono", Courier, monospace;
+  white-space: pre;
+  word-wrap: normal;
+  overflow-x: auto;
+}
+.editor-style pre code {
+  display: block;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border-radius: 0;
+}
+.editor-style hr {
+  display: block;
+  height: 0px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 15px 0;
+  padding: 0;
+}
+.editor-style table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 15px 0;
+}
+.editor-style table thead {
+  background-color: #f9f9f9;
+}
+.editor-style table td, .editor-style table th {
+  min-width: 40px;
+  height: 30px;
+  border: 1px solid #ccc;
+  vertical-align: top;
+  padding: 2px 4px;
+  text-align: left;
+  box-sizing: border-box;
+}
+.editor-style table td.active, .editor-style table th.active {
+  background-color: #ffffee;
+}
+.editor-style img {
+  /* margin: 0 5px; */
+  vertical-align: middle;
+  max-width: 100%;
+  width:auto;
+  height: auto;
+}

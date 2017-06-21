@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<item_card_task android:state_selected="true" android:drawable="@drawable/hoverscroll_edge"></item_card_task>-->
+    <item android:state_selected="true" android:drawable="@color/white"
+        ></item>
+    <item android:state_selected="false"><color android:color="@color/bg_color" />
+    </item>
+</selector>
