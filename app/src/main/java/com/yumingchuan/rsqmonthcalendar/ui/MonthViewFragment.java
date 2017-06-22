@@ -159,7 +159,7 @@ public class MonthViewFragment extends BaseFragment {
 
         loadData();
 
-        parseData();
+//        parseData();
 
     }
 

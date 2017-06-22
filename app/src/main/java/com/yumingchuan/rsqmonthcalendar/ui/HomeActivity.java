@@ -65,7 +65,11 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
+                if (state == ViewPager.SCROLL_STATE_SETTLING){
+                    int pos = vp_monthView.getCurrentItem();
+                    MonthViewFragment monthFragment = (MonthViewFragment) monthViewFragments.get(pos);
+                    monthFragment.parseData();
+                }
             }
         });
 
