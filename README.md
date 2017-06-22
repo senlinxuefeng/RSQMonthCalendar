@@ -27,7 +27,14 @@
     坑 3：ViewPager + fragment + viewpager + fragment 无线循环
     
     
-    坑 4：
+    坑 4：ChildViewPager：内部viewpager自定义，最重要的是android:layout_marginTop="-500dp"，防止强焦点
+    
+    <com.yumingchuan.rsqmonthcalendar.view.ChildViewPager
+        android:id="@+id/vp_weekSchedule"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="-500dp"
+        android:visibility="gone" />
     
     
     坑 5：
