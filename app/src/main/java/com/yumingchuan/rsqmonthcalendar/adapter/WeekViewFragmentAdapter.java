@@ -35,4 +35,6 @@ public class WeekViewFragmentAdapter extends FragmentStatePagerAdapter {
     public int getItemPosition(Object object) {
         return POSITION_NONE;
     }
+
+
 }

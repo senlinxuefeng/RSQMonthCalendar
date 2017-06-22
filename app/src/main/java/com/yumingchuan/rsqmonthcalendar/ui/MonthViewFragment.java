@@ -31,6 +31,7 @@ import com.yumingchuan.rsqmonthcalendar.utils.LogUtils;
 import com.yumingchuan.rsqmonthcalendar.utils.MonthViewCalendarUtil;
 import com.yumingchuan.rsqmonthcalendar.utils.PMUtils;
 import com.yumingchuan.rsqmonthcalendar.utils.TimestampTool;
+import com.yumingchuan.rsqmonthcalendar.utils.WeekFragmentUtils;
 import com.yumingchuan.rsqmonthcalendar.view.ChildViewPager;
 
 import java.io.ByteArrayOutputStream;
@@ -60,7 +61,6 @@ public class MonthViewFragment extends BaseFragment {
         }
     };
 
-    private LinearLayout[] linearLayouts;
     private List<DayInfo> listDayInfos;
     private Calendar calendar;
     private final int currentPosition;
@@ -92,8 +92,6 @@ public class MonthViewFragment extends BaseFragment {
 
 //        mrl_monthView.setDispatchView(vp_weekSchedule, ll_monthCalendarArea);
 
-        linearLayouts = new LinearLayout[]{ll_1, ll_2, ll_3, ll_4, ll_5, ll_6};
-
         initCurrentMonthInfo();
 
         renderMonthCalendarData(false);
@@ -115,7 +113,8 @@ public class MonthViewFragment extends BaseFragment {
         try {
             calendar = Calendar.getInstance();
             calendar.setTime(TimestampTool.sdf_all.parse(TimestampTool.getCurrentDateToWeb()));
-            calendar.add(Calendar.MONTH, currentPosition - 24);
+            calendar.add(Calendar.MONTH, 0);
+//            calendar.add(Calendar.MONTH, currentPosition - 24);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -220,14 +219,18 @@ public class MonthViewFragment extends BaseFragment {
 
     public void loadData() {
 
-        for (int i = 0; i < 7; i++) {
-            weekFragments.add(WeekViewFragment.newInstance());
-        }
+//        for (int i = 0; i < 7; i++) {
+//            weekFragments.add(WeekViewFragment.newInstance());
+//        }
+//
+        //tempFragments.addAll(weekFragments);
+        //weekViewFragmentAdapter = new WeekViewFragmentAdapter(getChildFragmentManager(), WeekFragmentUtils.getInstance().getWeekFragmentInstance());
+//
 
-        tempFragments.addAll(weekFragments);
-        weekViewFragmentAdapter = new WeekViewFragmentAdapter(getChildFragmentManager(), weekFragments);
-        vp_weekSchedule.setAdapter(weekViewFragmentAdapter);
-        vp_weekSchedule.setOnPageChangeListener(weekOnPageChangeListener);
+        //weekViewFragmentAdapter = WeekFragmentUtils.getInstance().getWeekViewFragmentAdapterInstance(getChildFragmentManager());
+
+//        vp_weekSchedule.setAdapter(weekViewFragmentAdapter);
+//        vp_weekSchedule.setOnPageChangeListener(weekOnPageChangeListener);
 
 //        srl_monthCalender.setOnRefreshListener(onRefreshListener);
 //        srl_monthCalender.setOnCanRefreshListener(onCanRefreshListener);
@@ -810,8 +813,9 @@ public class MonthViewFragment extends BaseFragment {
             //造成数据的错乱的主要原因
             weekFragments.clear();
             for (int i = 0; i < listDayInfos.get(dayInfo.position).daysOfWeek; i++) {
-                weekFragments.add(tempFragments.get(i));
+                weekFragments.add(WeekFragmentUtils.getInstance().getTempFragments().get(i));
             }
+
             weekViewFragmentAdapter.notifyDataSetChanged();
 
             //刷新数据
@@ -877,8 +881,8 @@ public class MonthViewFragment extends BaseFragment {
     public void onDestroy() {
         super.onDestroy();
         LogUtils.i("onDestroy", "onDestroy");
-        listDayInfos = null;
-        weekFragments = null;
+//        listDayInfos = null;
+//        weekFragments = null;
     }
 
 

@@ -23,7 +23,6 @@ public class MonthViewFragmentAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-
         return fragmentList.get(position);
     }
 
@@ -31,6 +30,9 @@ public class MonthViewFragmentAdapter extends FragmentStatePagerAdapter {
     public int getCount() {
         return 48;
     }
+
+
+
 
 
 }
