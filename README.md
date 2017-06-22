@@ -42,11 +42,11 @@
            android:visibility="gone" />
     
     
-    坑 5：SwipeRefreshLayout 刷新直接导致子viewpager不能滑动了，目前没有解决，😭😭😭😭😭😭😭😭😭😭<br>
+    坑 5：SwipeRefreshLayout 刷新直接导致子viewpager不能滑动了，目前没有解决，😭😭😭😭😭😭😭😭😭😭<br><br>
     
     
     
-    坑 6：<br>
+    坑 6：
 
 
 ![](https://github.com/senlinxuefeng/RSQMonthCalendar/raw/master/picture/monthcalendar2.gif)<br>
