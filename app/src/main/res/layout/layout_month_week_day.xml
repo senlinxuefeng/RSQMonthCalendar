@@ -56,12 +56,21 @@
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_schedule"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/rl_title"
-        android:orientation="vertical">
+        android:layout_below="@id/rl_title">
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_schedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
 </RelativeLayout>

@@ -32,7 +32,6 @@ import com.yumingchuan.rsqmonthcalendar.utils.MonthViewCalendarUtil;
 import com.yumingchuan.rsqmonthcalendar.utils.PMUtils;
 import com.yumingchuan.rsqmonthcalendar.utils.TimestampTool;
 import com.yumingchuan.rsqmonthcalendar.view.ChildViewPager;
-import com.yumingchuan.rsqmonthcalendar.view.MyTextView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -280,10 +279,8 @@ public class MonthViewFragment extends BaseFragment {
 
 
     private void addScheduleOrFestival(ViewGroup viewGroup, ScheduleToDo todo) {
-        MyTextView textView = new MyTextView(mContext);
+        TextView textView = new TextView(mContext);
         textView.setTextSize(10);
-//        textView.setSingleLine();
-//        textView.setSingleLine(true);
         textView.setLines(1);
         textView.setGravity(Gravity.CENTER);
         textView.setEllipsize(TextUtils.TruncateAt.END);
@@ -305,8 +302,6 @@ public class MonthViewFragment extends BaseFragment {
         textView.setLayoutParams(lp);
 
         textView.setText(todo.pTitle);
-
-
         viewGroup.addView(textView);
     }
 
@@ -529,6 +524,9 @@ public class MonthViewFragment extends BaseFragment {
             }
         }
     }
+
+
+
 
     private long startClickTime = 0;
 

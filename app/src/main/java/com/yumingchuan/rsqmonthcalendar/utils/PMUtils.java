@@ -35,7 +35,6 @@ public class PMUtils {
 
     private static PMUtils pmUtils;
 
-
     public static PMUtils getInstance() {
         if (pmUtils == null) {//双重校验DCL单例模式
             synchronized (PMUtils.class) {//同步代码块
