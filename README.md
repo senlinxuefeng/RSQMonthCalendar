@@ -5,7 +5,9 @@
    坑 1：//textView.setSingleLine();textView.setSingleLine(true);会影响抢焦点，导致viewpager不能正常滑动<br>
 
    坑 2：ViewPager setCurrentItem()后出现的问题，Can't change tag of fragment<br>
-    参考代码：private List<PageFragment> pages;
+    参考代码：
+    
+    private List<PageFragment> pages;
     //...
     public PageFragment getItem(int position) {
         PageFragment page = null;
@@ -27,14 +29,15 @@
     坑 3：ViewPager + fragment + viewpager + fragment 无线循环
     
     
-    坑 4：ChildViewPager：内部viewpager自定义，最重要的是android:layout_marginTop="-500dp"，防止强焦点
+    坑 4：ChildViewPager：内部viewpager自定义，最重要的是android:layout_marginTop="-500dp"，防止强焦点<br>
     
-    <com.yumingchuan.rsqmonthcalendar.view.ChildViewPager
-        android:id="@+id/vp_weekSchedule"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="-500dp"
-        android:visibility="gone" />
+    
+       <com.yumingchuan.rsqmonthcalendar.view.ChildViewPager
+           android:id="@+id/vp_weekSchedule"
+           android:layout_width="match_parent"
+           android:layout_height="1dp"
+           android:layout_marginTop="-500dp"
+           android:visibility="gone" />
     
     
     坑 5：
