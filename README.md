@@ -1,8 +1,10 @@
 #高仿朝夕日历的月视图(求关注加星:blush: :blush: :blush:)
 由于项目的需求，要做类似朝夕日历月视图效果，参考了好多资料，基本上实现了所需功能，加入了假数据，点击事件做了大量的判断，视图展开更加流畅，解决了周视图切换可能出现bug，求关注，希望可以帮助需要的朋友，有什么不懂得可以发邮件联系我（1107963848@qq.com)
 
-遇到坑：
-   坑 1：//textView.setSingleLine();textView.setSingleLine(true);会影响抢焦点，导致viewpager不能正常滑动<br>
+遇到坑：<br>
+
+   坑 1：textView.setSingleLine();textView.setSingleLine(true);<br>
+   会影响抢焦点，导致viewpager不能正常滑动<br>
 
    坑 2：ViewPager setCurrentItem()后出现的问题，Can't change tag of fragment<br>
     参考代码：
