@@ -7,7 +7,6 @@ import android.graphics.Paint;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -25,6 +24,7 @@ import com.yumingchuan.rsqmonthcalendar.bean.DayInfo;
 import com.yumingchuan.rsqmonthcalendar.bean.DayType;
 import com.yumingchuan.rsqmonthcalendar.bean.ScheduleMonthDetail;
 import com.yumingchuan.rsqmonthcalendar.bean.ScheduleToDo;
+import com.yumingchuan.rsqmonthcalendar.listener.MyOnPageChangeListener;
 import com.yumingchuan.rsqmonthcalendar.utils.CommonUtils;
 import com.yumingchuan.rsqmonthcalendar.utils.JsonUtils;
 import com.yumingchuan.rsqmonthcalendar.utils.LogUtils;
@@ -32,6 +32,7 @@ import com.yumingchuan.rsqmonthcalendar.utils.MonthViewCalendarUtil;
 import com.yumingchuan.rsqmonthcalendar.utils.PMUtils;
 import com.yumingchuan.rsqmonthcalendar.utils.TimestampTool;
 import com.yumingchuan.rsqmonthcalendar.view.ChildViewPager;
+import com.yumingchuan.rsqmonthcalendar.view.MyTextView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -48,7 +49,7 @@ public class MonthViewFragment extends BaseFragment {
 
     private boolean isNeedReAddFragment;
     public DayInfo currentDayInfo;
-    public Handler mHandler = new Handler() {
+    public Handler mWeekHandler = new Handler() {
 
         @Override
         public void handleMessage(Message msg) {
@@ -84,6 +85,8 @@ public class MonthViewFragment extends BaseFragment {
         super.initView();
 
         weekFragments = new ArrayList<>();
+        tempFragments = new ArrayList<>();
+
         listDayInfos = new ArrayList<DayInfo>();//一定要new 对象不能直接引用，气死了
         initCurrentCalendar();
         listDayInfos.addAll(MonthViewCalendarUtil.getInstance(mContext).getDayInfo(calendar));
@@ -125,10 +128,7 @@ public class MonthViewFragment extends BaseFragment {
     public void initCurrentMonthInfo() {
         currentMonthInfo = new CurrentMonthInfo();
         currentMonthInfo.weeks = calendar.getActualMaximum(Calendar.WEEK_OF_MONTH);
-
-        currentMonthInfo.currentY_M = TimestampTool.sdf_yMp.format(calendar.getTime());
-        currentMonthInfo.currentYM = TimestampTool.sdf_yM.format(calendar.getTime());
-        currentMonthInfo.currentYMD = TimestampTool.sdf_yMd.format(calendar.getTime());
+        currentMonthInfo.current_yMdp = TimestampTool.sdf_yMdp.format(calendar.getTime());
 
         LogUtils.i("MonthView", currentMonthInfo.weeks + " : " + currentMonthInfo.monthAreaWidth + " : " + currentMonthInfo.monthAreaHeight + " : " + currentMonthInfo.weekAreaHeight);
 
@@ -168,7 +168,6 @@ public class MonthViewFragment extends BaseFragment {
 
     public void parseData() {
 
-
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -192,12 +191,17 @@ public class MonthViewFragment extends BaseFragment {
                             @Override
                             public void run() {
                                 //防止快速切换月造成的数据不对问题
-                                if (scheduleMonthDetails != null && scheduleMonthDetails.get(20).date.contains(currentMonthInfo.currentY_M)) {
-                                    for (int j = 0; j < scheduleMonthDetails.size(); j++) {
-                                        listDayInfos.get(j).todos.clear();
-                                        listDayInfos.get(j).todos.addAll(PMUtils.getInstance().sortScheduleTodo(scheduleMonthDetails.get(j)));
+                                try {
+                                    if (scheduleMonthDetails != null && scheduleMonthDetails.get(20).date.contains(TimestampTool.sdf_yMp.format(TimestampTool.sdf_yMdp.parse(currentMonthInfo.current_yMdp)))) {
+                                        for (int j = 0; j < scheduleMonthDetails.size(); j++) {
+                                            listDayInfos.get(j).todos.clear();
+                                            listDayInfos.get(j).todos.addAll(PMUtils.getInstance().sortScheduleTodo(scheduleMonthDetails.get(j)));
+                                        }
+                                        renderMonthCalendarData(true);
                                     }
-                                    renderMonthCalendarData(true);
+
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
                                 }
                             }
                         });
@@ -221,8 +225,9 @@ public class MonthViewFragment extends BaseFragment {
             weekFragments.add(WeekViewFragment.newInstance());
         }
 
-        vpStatePagerAdapter = new WeekViewFragmentAdapter(getChildFragmentManager(), weekFragments);
-        vp_weekSchedule.setAdapter(vpStatePagerAdapter);
+        tempFragments.addAll(weekFragments);
+        weekViewFragmentAdapter = new WeekViewFragmentAdapter(getChildFragmentManager(), weekFragments);
+        vp_weekSchedule.setAdapter(weekViewFragmentAdapter);
         vp_weekSchedule.setOnPageChangeListener(weekOnPageChangeListener);
 
 //        srl_monthCalender.setOnRefreshListener(onRefreshListener);
@@ -230,11 +235,6 @@ public class MonthViewFragment extends BaseFragment {
     }
 
     //////////////////////////////////////////月视图start//////////////////////////////////////////////////////
-
-
-    public LinearLayout getMonthCalendarArea() {
-        return ll_monthCalendarArea;
-    }
 
     @BindView(R.id.ll_1)
     LinearLayout ll_1;
@@ -260,9 +260,9 @@ public class MonthViewFragment extends BaseFragment {
 //    public CustomSwipeToRefresh srl_monthCalender;
 
     public CurrentMonthInfo currentMonthInfo;
-    private ViewGroup currentViewGroup;
     List<Fragment> weekFragments;
-    private WeekViewFragmentAdapter vpStatePagerAdapter;
+    List<Fragment> tempFragments;
+    private WeekViewFragmentAdapter weekViewFragmentAdapter;
 
 
     private void stopRefresh() {
@@ -280,9 +280,11 @@ public class MonthViewFragment extends BaseFragment {
 
 
     private void addScheduleOrFestival(ViewGroup viewGroup, ScheduleToDo todo) {
-        TextView textView = new TextView(mContext);
+        MyTextView textView = new MyTextView(mContext);
         textView.setTextSize(10);
-        textView.setSingleLine();
+//        textView.setSingleLine();
+//        textView.setSingleLine(true);
+        textView.setLines(1);
         textView.setGravity(Gravity.CENTER);
         textView.setEllipsize(TextUtils.TruncateAt.END);
         textView.setTextColor(mContext.getResources().getColor(todo.pIsDone ? R.color.black_a3 : R.color.black_33));
@@ -303,11 +305,13 @@ public class MonthViewFragment extends BaseFragment {
         textView.setLayoutParams(lp);
 
         textView.setText(todo.pTitle);
+
+
         viewGroup.addView(textView);
     }
 
     private float getEditAreaTranslateHeight(int week) {
-        return currentMonthInfo.weeks == 5 ? ((week + 1) == 5 ? (currentMonthInfo.initY + currentMonthInfo.weekAreaHeight * 2) : (currentMonthInfo.weekAreaHeight + currentMonthInfo.initY)) : ((week + 1) == 6 ? (currentMonthInfo.weekAreaHeight * 2 + currentMonthInfo.initY) : (currentMonthInfo.weekAreaHeight + currentMonthInfo.initY));
+        return currentMonthInfo.weeks == 5 ? ((week + 1) == 5 ? (currentMonthInfo.weekAreaHeight * 2) : (currentMonthInfo.weekAreaHeight)) : ((week + 1) == 6 ? (currentMonthInfo.weekAreaHeight * 2) : (currentMonthInfo.weekAreaHeight));
     }
 
     private int transAnim = 200;
@@ -480,7 +484,7 @@ public class MonthViewFragment extends BaseFragment {
             mMonthHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    mHandler.sendEmptyMessage(1000);
+                    mWeekHandler.sendEmptyMessage(1000);
                 }
             }, 220);
 
@@ -497,7 +501,7 @@ public class MonthViewFragment extends BaseFragment {
                 mMonthHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        mHandler.sendEmptyMessage(1000);
+                        mWeekHandler.sendEmptyMessage(1000);
                     }
                 }, 220);
 
@@ -516,7 +520,7 @@ public class MonthViewFragment extends BaseFragment {
                         mMonthHandler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                mHandler.sendEmptyMessage(1000);
+                                mWeekHandler.sendEmptyMessage(1000);
                             }
                         }, 220);
                     }
@@ -580,12 +584,6 @@ public class MonthViewFragment extends BaseFragment {
      * @param addContent 是否添加内容
      */
     public void renderMonthCalendarData(boolean addContent) {
-        //展開的時候刷新數據
-//        int j = 0;
-//        for (int i = currentMonthInfo.startPosition; i < currentMonthInfo.endPosition; i++) {
-//            ((WeekViewFragment) tempFragments.get(j++)).addAndRefreshData(listDayInfos.get(i).todos);
-//        }
-
         for (int i = 0; i < 42; i++) {
             final ViewGroup view = (ViewGroup) ll_monthCalendarArea.getChildAt(i / 7);
             final ViewGroup dayOfWeek = (ViewGroup) view.getChildAt(i % 7);
@@ -624,10 +622,6 @@ public class MonthViewFragment extends BaseFragment {
                         dayOfWeek.findViewById(R.id.tv_holidays).setVisibility(View.GONE);
                     }
 
-
-                    LogUtils.i("renderMonthCalendarData", (i) + "::::" + listDayInfos.get(i).holidays + "::::::" + listDayInfos.get(i).date);
-
-
                     //设置背景
                     setMonthCalendarItemBackground(dayOfWeek, listDayInfos.get(i));
 
@@ -650,94 +644,37 @@ public class MonthViewFragment extends BaseFragment {
     }
 
 
-    /**
-     * 渲染月视图的背景色
-     */
-    private void renderMonthCalendarBackground() {
-        for (int i = 0; i < 42; i++) {
-            ViewGroup view = (ViewGroup) ll_monthCalendarArea.getChildAt(i / 7);
-            ViewGroup dayOfWeek = (ViewGroup) view.getChildAt(i % 7);
-            DayInfo dayInfo = listDayInfos.get((Integer) dayOfWeek.getTag());
-
-            //设置背景
-            setMonthCalendarItemBackground(dayOfWeek, dayInfo);
-        }
-    }
-
-    /**
-     * 设置月视图的item的背景色
-     *
-     * @param dayOfWeek
-     * @param dayInfo
-     */
-    private void setMonthCalendarItemBackground(ViewGroup dayOfWeek, DayInfo dayInfo) {
-        if (dayInfo.dayType == DayType.DAY_TYPE_NOW && (currentMonthInfo.currentY_M + "-" + String.format("%02d", dayInfo.day) + " 00:00:00").equals("2017-06-19 00:00:00")) {
-            dayOfWeek.setBackgroundResource(R.drawable.shape_rect_border_da_bg_f5);
-        } else if (dayInfo.dayType == DayType.DAY_TYPE_NOW && TimestampTool.getCurrentYearMonthDay().equals(currentMonthInfo.currentYM + String.format("%02d", dayInfo.day))) {
-            dayOfWeek.setBackgroundResource(R.drawable.shape_rect_border_da_bg_bg);
-        } else {
-            dayOfWeek.setBackgroundResource(R.drawable.shape_rect_border_da_bg_white);
-        }
-    }
-
-
-    ViewPager.OnPageChangeListener weekOnPageChangeListener = new ViewPager.OnPageChangeListener() {
-        @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-        }
-
+    MyOnPageChangeListener weekOnPageChangeListener = new MyOnPageChangeListener() {
         @Override
         public void onPageSelected(int position) {
 
             if (vp_weekSchedule.getVisibility() == View.VISIBLE && currentMonthInfo.currentOpenDayOfMonth != -1 && listDayInfos != null && listDayInfos.size() == 42) {
-                if (listDayInfos.get(currentMonthInfo.currentOpenDayOfMonth).daysOfWeek == 7) {
-                    setItemBackground(position);
-                    currentMonthInfo.currentOpenDayOfWeek = position;
+
+                int tempPosition;
+
+                if (weekViewFragmentAdapter.getCount() != 7 && currentMonthInfo.currentOpenWeek < 3) {
+                    tempPosition = currentMonthInfo.currentOpenWeek * 7 + 7 - weekViewFragmentAdapter.getCount() + position;
+                } else if (weekViewFragmentAdapter.getCount() != 7 && currentMonthInfo.currentOpenWeek > 3) {
+                    tempPosition = currentMonthInfo.currentOpenWeek * 7 + position;
                 } else {
-                    if (listDayInfos.get(currentMonthInfo.currentOpenDayOfMonth).whichWeek == 1) {
-                        setItemBackground(position + (7 - listDayInfos.get(currentMonthInfo.currentOpenDayOfMonth).daysOfWeek));
-                        currentMonthInfo.currentOpenDayOfWeek = position;
-                    } else {
-                        setItemBackground(position);
-                        currentMonthInfo.currentOpenDayOfWeek = position;
-                    }
+                    tempPosition = currentMonthInfo.currentOpenWeek * 7 + position;
                 }
 
-                WeekViewFragment weekScheduleFragment = (WeekViewFragment) vpStatePagerAdapter.getItem(position);
+                currentDayInfo = listDayInfos.get(tempPosition);
+                if (currentDayInfo.dayType == DayType.DAY_TYPE_NOW) {
+                    currentMonthInfo.current_yMdp = currentDayInfo.date;
+                    renderMonthCalendarBackground();
+                }
+
+                WeekViewFragment weekScheduleFragment = (WeekViewFragment) weekViewFragmentAdapter.getItem(position);
                 weekScheduleFragment.addAndRefreshData(listDayInfos.get(currentDayInfo.position).todos);
-
             }
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int state) {
-
         }
     };
-
-
-    private void setItemBackground(int position) {
-        for (int i = 0; i < 7; i++) {
-            final DayInfo dayInfo = listDayInfos.get((Integer) ((ViewGroup) currentViewGroup.getParent()).getChildAt(i).getTag());
-            if (i == position) {
-                ((ViewGroup) currentViewGroup.getParent()).getChildAt(i).setBackgroundResource(R.drawable.shape_rect_border_da_bg_f5);
-                //RSQApplication.getInstance().setCurrentSelectDate(currentMonthInfo.currentY_M + "-" + String.format("%02d", dayInfo.day) + " 00:00:00");
-                //((HomeActivity) mContext).setIsToday();
-            } else if (TimestampTool.getCurrentYearMonthDay().equals(currentMonthInfo.currentYM + String.format("%02d", dayInfo.day))) {
-                ((ViewGroup) currentViewGroup.getParent()).getChildAt(i).setBackgroundResource(R.drawable.shape_rect_border_da_bg_bg);
-            } else {
-                ((ViewGroup) currentViewGroup.getParent()).getChildAt(i).setBackgroundResource(R.drawable.shape_rect_border_da_bg_white);
-            }
-
-        }
-    }
-
 
     private ViewGroup getCurrentClickView(int position) {
         return (ViewGroup) ((ViewGroup) ll_monthCalendarArea.getChildAt(position / 7)).getChildAt(position % 7);
     }
-
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -764,11 +701,17 @@ public class MonthViewFragment extends BaseFragment {
      */
     private void clickSomeDate(View v) {
 
-        if (listDayInfos == null){
+        if (listDayInfos == null) {
             return;
         }
 
         currentDayInfo = listDayInfos.get((Integer) v.getTag());
+
+        if (listDayInfos.get(currentDayInfo.position).dayType == DayType.DAY_TYPE_NOW) {
+            currentMonthInfo.current_yMdp = currentDayInfo.date;
+            renderMonthCalendarBackground();
+        }
+
         if (listDayInfos.get(currentDayInfo.position).dayType == DayType.DAY_TYPE_NOW) {
 
             isNeedReAddFragment = (-1 == currentMonthInfo.currentOpenDayOfMonth) || (currentMonthInfo.currentOpenDayOfMonth / 7 != currentDayInfo.position / 7);
@@ -779,21 +722,18 @@ public class MonthViewFragment extends BaseFragment {
             if (!isNeedReAddFragment && isCanTranslate(160) && !isNeedChange) {
                 startClickTime = System.currentTimeMillis();
                 if (listDayInfos.get(currentDayInfo.position).dayType == DayType.DAY_TYPE_NOW) {
-                    currentViewGroup = (ViewGroup) v;
 //                        RSQApplication.getInstance().setCurrentSelectDate(currentMonthInfo.currentY_M + "-" + String.format("%02d", currentDayInfo.day) + " 00:00:00");
 //                        ((HomeActivity) mContext).setIsToday();
-                    renderMonthCalendarBackground();
+
                     currentMonthInfo.currentOpenDayOfMonth = currentDayInfo.position;
-                    mHandler.sendEmptyMessage(1000);
-                    v.setBackgroundResource(R.drawable.shape_rect_border_da_bg_f5);
+
+                    mWeekHandler.sendEmptyMessage(1000);
                 }
             } else {
                 if (isCanTranslate(400)) {
                     startClickTime = System.currentTimeMillis();
-                    currentViewGroup = (ViewGroup) v;
 //                        RSQApplication.getInstance().setCurrentSelectDate(currentMonthInfo.currentY_M + "-" + String.format("%02d", currentDayInfo.day) + " 00:00:00");
 //                        ((HomeActivity) mContext).setIsToday();
-                    renderMonthCalendarBackground();
 
                     if (isNeedChange) {
                         switch (currentDayInfo.position / 7) {
@@ -828,13 +768,67 @@ public class MonthViewFragment extends BaseFragment {
 
                     }
                     currentMonthInfo.currentOpenDayOfMonth = currentDayInfo.position;
-                    v.setBackgroundResource(R.drawable.shape_rect_border_da_bg_f5);
                 }
             }
         }
     }
 
+
+    /**
+     * 渲染月视图的背景色
+     */
+    private void renderMonthCalendarBackground() {
+        for (int i = 0; i < 42; i++) {
+            ViewGroup view = (ViewGroup) ll_monthCalendarArea.getChildAt(i / 7);
+            ViewGroup dayOfWeek = (ViewGroup) view.getChildAt(i % 7);
+            DayInfo dayInfo = listDayInfos.get((Integer) dayOfWeek.getTag());
+            //设置背景
+            setMonthCalendarItemBackground(dayOfWeek, dayInfo);
+        }
+    }
+
+    /**
+     * 设置月视图的item的背景色
+     *
+     * @param dayOfWeek
+     * @param dayInfo
+     */
+    private void setMonthCalendarItemBackground(ViewGroup dayOfWeek, DayInfo dayInfo) {
+        //选中的天//今天
+        if (dayInfo.dayType == DayType.DAY_TYPE_NOW && (currentMonthInfo.current_yMdp).equals(dayInfo.date)) {
+            dayOfWeek.setBackgroundResource(R.drawable.shape_rect_border_da_bg_f5);
+        } else if (dayInfo.dayType == DayType.DAY_TYPE_NOW && TimestampTool.getCurrentDateToWebYMD().equals(dayInfo.date)) {
+            dayOfWeek.setBackgroundResource(R.drawable.shape_rect_border_da_bg_bg);
+        } else {
+            dayOfWeek.setBackgroundResource(R.drawable.shape_rect_border_da_bg_white);
+        }
+    }
+
+
     private void setWeekFragmentData(final DayInfo dayInfo) {
+
+
+        if (isNeedReAddFragment && currentMonthInfo.isExpand) {
+            //造成数据的错乱的主要原因
+            weekFragments.clear();
+            for (int i = 0; i < listDayInfos.get(dayInfo.position).daysOfWeek; i++) {
+                weekFragments.add(tempFragments.get(i));
+            }
+            weekViewFragmentAdapter.notifyDataSetChanged();
+
+            //刷新数据
+            mMonthHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    WeekViewFragment weekViewFragment = (WeekViewFragment) weekViewFragmentAdapter.getItem(vp_weekSchedule.getCurrentItem());
+                    weekViewFragment.addAndRefreshData(listDayInfos.get(currentDayInfo.position).todos);
+
+                }
+            }, 40);
+
+        }
+
         if (listDayInfos.get(dayInfo.position).daysOfWeek == 7) {
             currentMonthInfo.currentOpenDayOfWeek = (dayInfo.position) % 7;
             vp_weekSchedule.setCurrentItem((dayInfo.position) % listDayInfos.get(dayInfo.position).daysOfWeek);
@@ -857,19 +851,23 @@ public class MonthViewFragment extends BaseFragment {
         stopRefresh();
         List<ScheduleMonthDetail> scheduleMonthDetails = JsonUtils.stringToArray(response, ScheduleMonthDetail[].class);
         //防止快速切换月造成的数据不对问题
-        if (scheduleMonthDetails != null && scheduleMonthDetails.get(20).date.contains(currentMonthInfo.currentY_M)) {
-            //数据处理
-            if (currentMonthInfo.isNeedRemoveData) {
-                for (int i = 0; i < 7; i++) {
-                    scheduleMonthDetails.add(scheduleMonthDetails.remove(0));
+        try {
+            if (scheduleMonthDetails != null && scheduleMonthDetails.get(20).date.contains(TimestampTool.sdf_yMp.format(TimestampTool.sdf_yMdp.parse(currentMonthInfo.current_yMdp)))) {
+                //数据处理
+                if (currentMonthInfo.isNeedRemoveData) {
+                    for (int i = 0; i < 7; i++) {
+                        scheduleMonthDetails.add(scheduleMonthDetails.remove(0));
+                    }
                 }
+                //数据赋值
+                for (int i = 0; i < scheduleMonthDetails.size(); i++) {
+                    listDayInfos.get(i).todos.clear();
+                    listDayInfos.get(i).todos.addAll(PMUtils.getInstance().sortScheduleTodo(scheduleMonthDetails.get(i)));
+                }
+                renderMonthCalendarData(true);
             }
-            //数据赋值
-            for (int i = 0; i < scheduleMonthDetails.size(); i++) {
-                listDayInfos.get(i).todos.clear();
-                listDayInfos.get(i).todos.addAll(PMUtils.getInstance().sortScheduleTodo(scheduleMonthDetails.get(i)));
-            }
-            renderMonthCalendarData(true);
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
     }
 

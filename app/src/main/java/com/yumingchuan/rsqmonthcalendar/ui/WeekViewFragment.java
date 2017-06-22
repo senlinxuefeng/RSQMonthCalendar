@@ -32,7 +32,7 @@ public class WeekViewFragment extends BaseFragment {
     private MonthScheduleAdapter monthScheduleAdapter;
 
 
-    public static WeekViewFragment newInstance(){
+    public static WeekViewFragment newInstance() {
         return new WeekViewFragment();
     }
 
@@ -45,14 +45,21 @@ public class WeekViewFragment extends BaseFragment {
     @Override
     protected void initView() {
         super.initView();
+        initAdapter();
+    }
+
+    /**
+     * 初始化adapter的信息
+     */
+    private void initAdapter() {
         totalTodo = new ArrayList<ScheduleToDo>();
         monthScheduleAdapter = new MonthScheduleAdapter(mContext, totalTodo);
         lv_monthSchedule.setAdapter(monthScheduleAdapter);
     }
 
-    public void addAndRefreshData(List<ScheduleToDo> temoTodos) {
+    public void addAndRefreshData(List<ScheduleToDo> tempTodos) {
         totalTodo.clear();
-        totalTodo.addAll(temoTodos);
+        totalTodo.addAll(tempTodos);
         tv_createSchedule.setVisibility(totalTodo.size() != 0 ? View.GONE : View.VISIBLE);
         lv_monthSchedule.setVisibility(totalTodo.size() != 0 ? View.VISIBLE : View.GONE);
         monthScheduleAdapter.notifyDataSetChanged();

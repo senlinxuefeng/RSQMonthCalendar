@@ -11,8 +11,8 @@ public class DayInfo {
     public int position;
     public int day;
     public DayType dayType;
-    public int daysOfWeek;
-    public int whichWeek;
+    public int daysOfWeek;//某一周是今天的日期的天数
+    public int whichWeek;//是哪一周
     public String date;
     public String lunarStr;
     public int holidays;//1：休 2：班

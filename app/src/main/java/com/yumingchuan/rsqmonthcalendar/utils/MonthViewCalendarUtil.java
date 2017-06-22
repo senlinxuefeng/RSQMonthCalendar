@@ -110,12 +110,8 @@ public class MonthViewCalendarUtil {
      **/
     public DayInfo[] get42DayInfo(Calendar calendar) {
 
-        LogUtils.i("mmm", TimestampTool.sdf_all.format(calendar.getTime()));
-
         mSelYear = calendar.get(Calendar.YEAR);
         mSelMonth = calendar.get(Calendar.MONTH);
-
-        LogUtils.i("mmm", "mSelYear::" + mSelYear + "  mSelMonth::  " + mSelMonth);
 
         getLastMonth();
         getThisMonth(calendar);
@@ -171,8 +167,6 @@ public class MonthViewCalendarUtil {
 
             Calendar tempCalendar = Calendar.getInstance();
             tempCalendar.set(mSelYear, mSelMonth, dayInfos[row * 7 + col].day);
-
-            LogUtils.i("getThisMonth", (row * 7 + col) + "::::" + currentSelectedDay + "::::::" + dayInfos[row * 7 + col].day + "::::::" + TimestampTool.sdf_yMdp.format(tempCalendar.getTime()));
 
             dayInfos[row * 7 + col].date = TimestampTool.sdf_yMdp.format(tempCalendar.getTime());
 
@@ -271,8 +265,6 @@ public class MonthViewCalendarUtil {
             if ("".equals(dayInfos[i].lunarStr)) {
                 dayInfos[i].lunarStr = LunarCalendarUtils.getLunarDayString(day);
             }
-
-            LogUtils.i("lunarStrlunarStr", dayInfos[i].date + "::::" + mSelYear + "::::" + mSelMonth + "::::" + dayInfos[i].lunarStr);
 
             day++;
         }

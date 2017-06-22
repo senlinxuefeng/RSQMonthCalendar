@@ -17,12 +17,7 @@ public class CurrentMonthInfo {
     public float monthAreaWidth;//月视图的宽度
     public int weekAreaHeight;//每周的高
 
-    public float initY;
-
-    public String currentYM;//yyyyMM
-    public String currentY_M; //yyyy-MM
-    public String currentYMD;//yyyyMMdd
-
+    public String current_yMdp;//yyyyMMdd
 
     public int startPosition = -1;//周日曆的開始位置
     public int endPosition = -1;//周日曆的結束位置
