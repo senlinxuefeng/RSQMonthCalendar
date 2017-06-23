@@ -31,10 +31,10 @@ public class WeekViewFragmentAdapter extends FragmentStatePagerAdapter {
         return fragments.size();
     }
 
-    @Override
-    public int getItemPosition(Object object) {
-        return POSITION_NONE;
-    }
+//    @Override
+//    public int getItemPosition(Object object) {
+//        return POSITION_NONE;
+//    }
 
 
 }

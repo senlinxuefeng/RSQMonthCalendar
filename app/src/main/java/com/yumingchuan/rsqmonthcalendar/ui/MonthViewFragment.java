@@ -231,13 +231,13 @@ public class MonthViewFragment extends BaseFragment {
 //        }
 //
         //tempFragments.addAll(weekFragments);
-        //weekViewFragmentAdapter = new WeekViewFragmentAdapter(getChildFragmentManager(), WeekFragmentUtils.getInstance().getWeekFragmentInstance());
+        weekViewFragmentAdapter = new WeekViewFragmentAdapter(getChildFragmentManager(), WeekFragmentUtils.getInstance().getWeekFragmentInstance());
 //
 
-        //weekViewFragmentAdapter = WeekFragmentUtils.getInstance().getWeekViewFragmentAdapterInstance(getChildFragmentManager());
+       // weekViewFragmentAdapter = WeekFragmentUtils.getInstance().getWeekViewFragmentAdapterInstance(getChildFragmentManager());
 
-//        vp_weekSchedule.setAdapter(weekViewFragmentAdapter);
-//        vp_weekSchedule.setOnPageChangeListener(weekOnPageChangeListener);
+        vp_weekSchedule.setAdapter(weekViewFragmentAdapter);
+        vp_weekSchedule.setOnPageChangeListener(weekOnPageChangeListener);
 
 //        srl_monthCalender.setOnRefreshListener(onRefreshListener);
 //        srl_monthCalender.setOnCanRefreshListener(onCanRefreshListener);
@@ -597,6 +597,9 @@ public class MonthViewFragment extends BaseFragment {
             TextView tv_scheduleNum = (TextView) dayOfWeek.findViewById(R.id.tv_scheduleNum);
 
             if (addContent) {
+
+                ll_schedule.removeAllViews();
+
                 if (listDayInfos.get(i).dayType == DayType.DAY_TYPE_NOW) {
                     for (int k = 0; k < listDayInfos.get(i).todos.size() && k < 2; k++) {
                         addScheduleOrFestival(ll_schedule, listDayInfos.get(i).todos.get(k));
@@ -674,8 +677,10 @@ public class MonthViewFragment extends BaseFragment {
 
                 WeekViewFragment weekScheduleFragment = (WeekViewFragment) weekViewFragmentAdapter.getItem(position);
                 weekScheduleFragment.addAndRefreshData(listDayInfos.get(currentDayInfo.position).todos);
+
             }
         }
+
     };
 
     private ViewGroup getCurrentClickView(int position) {

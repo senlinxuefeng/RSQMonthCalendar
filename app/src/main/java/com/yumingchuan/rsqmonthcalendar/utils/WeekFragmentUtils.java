@@ -1,9 +1,7 @@
 package com.yumingchuan.rsqmonthcalendar.utils;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 
-import com.yumingchuan.rsqmonthcalendar.adapter.WeekViewFragmentAdapter;
 import com.yumingchuan.rsqmonthcalendar.ui.WeekViewFragment;
 
 import java.util.ArrayList;
@@ -19,7 +17,6 @@ public class WeekFragmentUtils {
     private static WeekFragmentUtils weekFragmentUtils;
     private List<Fragment> weekFragments;
     private List<Fragment> tempFragments;
-    private WeekViewFragmentAdapter weekViewFragmentAdapter;
 
     public static WeekFragmentUtils getInstance() {
         if (weekFragmentUtils == null) {//双重校验DCL单例模式
@@ -47,17 +44,17 @@ public class WeekFragmentUtils {
         return weekFragments;
     }
 
-    /**
-     * @return 获取WeekViewFragmentAdapter实例
-     */
-    public WeekViewFragmentAdapter getWeekViewFragmentAdapterInstance(FragmentManager fm) {
-        if (weekViewFragmentAdapter == null){
-            weekViewFragmentAdapter = new WeekViewFragmentAdapter(fm, getWeekFragmentInstance());
-        }
-        return weekViewFragmentAdapter;
-    }
 
     public List<Fragment> getTempFragments() {
+
+        if (tempFragments == null || tempFragments.size() == 0){
+            getWeekFragmentInstance();
+        }
+
         return tempFragments;
+
     }
+
+
+
 }

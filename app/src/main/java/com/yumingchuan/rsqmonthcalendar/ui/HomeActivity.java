@@ -35,14 +35,20 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-       // vp_monthView = (ViewPager) findViewById(R.id.vp_monthView);
+        // vp_monthView = (ViewPager) findViewById(R.id.vp_monthView);
 
         monthViewFragments = new ArrayList<>();
         for (int i = 0; i < 48; i++) {
-            monthViewFragments.add(MonthViewFragment.newInstance(i));
+            if (i >= 22 && i <= 26) {
+                monthViewFragments.add(i, MonthViewFragment.newInstance(i));
+            } else {
+                monthViewFragments.add(null);
+            }
+
         }
 
         monthViewFragmentAdapter = new MonthViewFragmentAdapter(getSupportFragmentManager(), monthViewFragments);
+        vp_monthView.setCurrentItem(2);
         vp_monthView.setAdapter(monthViewFragmentAdapter);
         vp_monthView.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -66,30 +72,45 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                if (state == ViewPager.SCROLL_STATE_SETTLING){
+                if (state == ViewPager.SCROLL_STATE_SETTLING) {
                     Stack stack = monthViewFragmentAdapter.getStack();
-                    while (!stack.empty()){
+                    while (!stack.empty()) {
                         MonthViewFragment fragment = (MonthViewFragment) stack.pop();
                         fragment.parseData();
                     }
 
+//                if (state == ViewPager.SCROLL_STATE_SETTLING) {
+//                    MonthViewFragment monthFragment = (MonthViewFragment) monthViewFragmentAdapter.getItem(vp_monthView.getCurrentItem());
+//
+//                    if (monthFragment.isAdded()) {
+//
+//                        date.setText(TimestampTool.sdf_all.format(monthFragment.getCalendar().getTime()));
+//                    }
+//
+//                    monthFragment.parseData();
+//
+//
+//                }
                 }
+
+                vp_monthView.setCurrentItem(24);
+
             }
+
+
+//    @Override
+//    public void onWindowFocusChanged(boolean hasFocus) {
+//        super.onWindowFocusChanged(hasFocus);
+//
+//
+//        //        MonthViewFragment monthFragment = (MonthViewFragment) monthViewFragmentAdapter.getItem(vp_monthView.getCurrentItem() % 5);
+//        //        monthEditAreaWidth = monthFragment.getMonthCalendarArea().getWidth();
+//        //        monthEditAreaHeight = monthFragment.getMonthCalendarArea().getHeight();
+//
+//
+//    }
         });
 
-        vp_monthView.setCurrentItem(24);
-
-    }
-
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-
-
-        //        MonthViewFragment monthFragment = (MonthViewFragment) monthViewFragmentAdapter.getItem(vp_monthView.getCurrentItem() % 5);
-        //        monthEditAreaWidth = monthFragment.getMonthCalendarArea().getWidth();
-        //        monthEditAreaHeight = monthFragment.getMonthCalendarArea().getHeight();
 
 
 

@@ -8,11 +8,8 @@ import android.view.ViewGroup;
 
 import com.yumingchuan.rsqmonthcalendar.ui.MonthViewFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-
-import static android.media.CamcorderProfile.get;
 
 /**
  * Created by yumingchuan on 2017/6/15.
@@ -31,6 +28,8 @@ public class MonthViewFragmentAdapter extends FragmentStatePagerAdapter {
     private List<Fragment> fragmentList;
     private Fragment mCurrentFragment;
 
+//    private Stack<Fragment> stack = new Stack<Fragment>();
+
     public MonthViewFragmentAdapter(FragmentManager fm, List<Fragment> fragmentList) {
         super(fm);
         this.fragmentList = fragmentList;
@@ -42,6 +41,32 @@ public class MonthViewFragmentAdapter extends FragmentStatePagerAdapter {
         fragment = MonthViewFragment.newInstance(position);
         stack.add(fragment);
         return fragment;
+//        Fragment fragment;
+//        if (stack.isEmpty()){
+//            fragment = MonthViewFragment.newInstance(position);
+//        }else {
+//             fragment = stack.pop();
+//        }
+//        return fragment;
+//        return MonthViewFragment.newInstance(position);
+
+
+//        Fragment page;
+//        if (fragmentList.size() > position) {
+//            page = fragmentList.get(position);
+//            if (page != null) {
+//                return page;
+//            }
+//        }
+//
+//        while (position >= fragmentList.size()) {
+//            fragmentList.add(null);
+//        }
+//        page = MonthViewFragment.newInstance(position);
+//        fragmentList.set(position, page);
+//
+//        return page;
+
     }
 
     @Override
@@ -66,6 +91,8 @@ public class MonthViewFragmentAdapter extends FragmentStatePagerAdapter {
     public int getCount() {
         return 48;
     }
+//        Fragment fragment = (Fragment) object;
+//        stack.add(fragment);
 
-
+//    }
 }
