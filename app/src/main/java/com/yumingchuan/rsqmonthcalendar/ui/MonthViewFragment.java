@@ -64,6 +64,7 @@ public class MonthViewFragment extends BaseFragment {
     private List<DayInfo> listDayInfos;
     private Calendar calendar;
     private final int currentPosition;
+    private List<ScheduleMonthDetail> scheduleMonthDetails;
 
     public MonthViewFragment(int position) {
         currentPosition = position;
@@ -164,15 +165,18 @@ public class MonthViewFragment extends BaseFragment {
     }
 
 
-    public void parseData() {
+    boolean  initData = false;
 
+    public void parseData() {
+        if (initData){
+            return;
+        }
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
 
                     LogUtils.i("InputStream", System.currentTimeMillis() + "");
-
                     InputStream is = mContext.getAssets().open("testdata.json");
                     final ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     int i;
@@ -182,25 +186,15 @@ public class MonthViewFragment extends BaseFragment {
 
                     LogUtils.i("InputStream", System.currentTimeMillis() + "");
 
-                    final List<ScheduleMonthDetail> scheduleMonthDetails = JsonUtils.stringToArray(baos.toString(), ScheduleMonthDetail[].class);
+                    scheduleMonthDetails = JsonUtils.stringToArray(baos.toString(), ScheduleMonthDetail[].class);
 
                     if (getActivity() != null) {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 //防止快速切换月造成的数据不对问题
-                                try {
-                                    if (scheduleMonthDetails != null && scheduleMonthDetails.get(20).date.contains(TimestampTool.sdf_yMp.format(TimestampTool.sdf_yMdp.parse(currentMonthInfo.current_yMdp)))) {
-                                        for (int j = 0; j < scheduleMonthDetails.size(); j++) {
-                                            listDayInfos.get(j).todos.clear();
-                                            listDayInfos.get(j).todos.addAll(PMUtils.getInstance().sortScheduleTodo(scheduleMonthDetails.get(j)));
-                                        }
-                                        renderMonthCalendarData(true);
-                                    }
-
-                                } catch (ParseException e) {
-                                    e.printStackTrace();
-                                }
+                                updateView();
+                                initData = true;
                             }
                         });
                     }
@@ -212,8 +206,21 @@ public class MonthViewFragment extends BaseFragment {
                 }
             }
         }).start();
+    }
 
+    private void updateView() {
+        try {
+            if (scheduleMonthDetails != null && scheduleMonthDetails.get(20).date.contains(TimestampTool.sdf_yMp.format(TimestampTool.sdf_yMdp.parse(currentMonthInfo.current_yMdp)))) {
+                for (int j = 0; j < scheduleMonthDetails.size(); j++) {
+                    listDayInfos.get(j).todos.clear();
+                    listDayInfos.get(j).todos.addAll(PMUtils.getInstance().sortScheduleTodo(scheduleMonthDetails.get(j)));
+                }
+                renderMonthCalendarData(true);
+            }
 
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -527,8 +534,6 @@ public class MonthViewFragment extends BaseFragment {
             }
         }
     }
-
-
 
 
     private long startClickTime = 0;
@@ -884,6 +889,7 @@ public class MonthViewFragment extends BaseFragment {
 //        listDayInfos = null;
 //        weekFragments = null;
     }
+
 
 
 }

@@ -12,6 +12,7 @@ import com.yumingchuan.rsqmonthcalendar.utils.TimestampTool;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,23 +53,26 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
 
-                MonthViewFragment monthFragment = (MonthViewFragment) monthViewFragments.get(position);
-
-                monthFragment.getCalendar();
-
-                if (monthFragment.isAdded()) {
-                    //monthFragment.setWeekFragments();
-                    date.setText(TimestampTool.sdf_all.format(monthFragment.getCalendar().getTime()));
-                }
+//                MonthViewFragment monthFragment = (MonthViewFragment) monthViewFragmentAdapter.getItem(position);
+//
+//                monthFragment.getCalendar();
+//
+//                if (monthFragment.isAdded()) {
+//                    //monthFragment.setWeekFragments();
+//                    date.setText(TimestampTool.sdf_all.format(monthFragment.getCalendar().getTime()));
+//                }
 
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
                 if (state == ViewPager.SCROLL_STATE_SETTLING){
-                    int pos = vp_monthView.getCurrentItem();
-                    MonthViewFragment monthFragment = (MonthViewFragment) monthViewFragments.get(pos);
-                    monthFragment.parseData();
+                    Stack stack = monthViewFragmentAdapter.getStack();
+                    while (!stack.empty()){
+                        MonthViewFragment fragment = (MonthViewFragment) stack.pop();
+                        fragment.parseData();
+                    }
+
                 }
             }
         });
