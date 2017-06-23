@@ -34,14 +34,20 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-       // vp_monthView = (ViewPager) findViewById(R.id.vp_monthView);
+        // vp_monthView = (ViewPager) findViewById(R.id.vp_monthView);
 
         monthViewFragments = new ArrayList<>();
         for (int i = 0; i < 48; i++) {
-            monthViewFragments.add(MonthViewFragment.newInstance(i));
+            if (i >= 22 && i <= 26) {
+                monthViewFragments.add(i, MonthViewFragment.newInstance(i));
+            } else {
+                monthViewFragments.add(null);
+            }
+
         }
 
         monthViewFragmentAdapter = new MonthViewFragmentAdapter(getSupportFragmentManager(), monthViewFragments);
+        vp_monthView.setCurrentItem(2);
         vp_monthView.setAdapter(monthViewFragmentAdapter);
         vp_monthView.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -52,25 +58,21 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
 
-                MonthViewFragment monthFragment = (MonthViewFragment) monthViewFragments.get(position);
-
-                monthFragment.getCalendar();
-
-                if (monthFragment.isAdded()) {
-                    //monthFragment.
-                    //
-                    // ();
-                    date.setText(TimestampTool.sdf_all.format(monthFragment.getCalendar().getTime()));
-                }
-
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                if (state == ViewPager.SCROLL_STATE_SETTLING){
-                    int pos = vp_monthView.getCurrentItem();
-                    MonthViewFragment monthFragment = (MonthViewFragment) monthViewFragments.get(pos);
+                if (state == ViewPager.SCROLL_STATE_SETTLING) {
+                    MonthViewFragment monthFragment = (MonthViewFragment) monthViewFragmentAdapter.getItem(vp_monthView.getCurrentItem());
+
+                    if (monthFragment.isAdded()) {
+
+                        date.setText(TimestampTool.sdf_all.format(monthFragment.getCalendar().getTime()));
+                    }
+
                     monthFragment.parseData();
+
+
                 }
             }
         });
@@ -88,7 +90,6 @@ public class HomeActivity extends AppCompatActivity {
         //        MonthViewFragment monthFragment = (MonthViewFragment) monthViewFragmentAdapter.getItem(vp_monthView.getCurrentItem() % 5);
         //        monthEditAreaWidth = monthFragment.getMonthCalendarArea().getWidth();
         //        monthEditAreaHeight = monthFragment.getMonthCalendarArea().getHeight();
-
 
 
     }
