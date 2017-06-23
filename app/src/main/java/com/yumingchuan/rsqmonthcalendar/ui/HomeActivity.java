@@ -57,7 +57,9 @@ public class HomeActivity extends AppCompatActivity {
                 monthFragment.getCalendar();
 
                 if (monthFragment.isAdded()) {
-                    //monthFragment.setWeekFragments();
+                    //monthFragment.
+                    //
+                    // ();
                     date.setText(TimestampTool.sdf_all.format(monthFragment.getCalendar().getTime()));
                 }
 
