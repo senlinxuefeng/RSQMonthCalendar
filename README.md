@@ -2,7 +2,7 @@
 由于项目的需求，参考了大量的日历相关资料，基本上实现了所需功能，加入了假数据，希望可以帮助需要的朋友，有什么不懂得可以发邮件联系我（1107963848@qq.com)
 ## 效果图：
 
-![](https://github.com/senlinxuefeng/RSQMonthCalendar/raw/master/picture/monthcalendar2.gif)<br>
+![](https://github.com/senlinxuefeng/RSQMonthCalendar/raw/master/picture/111.gif)<br>
 
 ## 遇到坑：<br>
 
