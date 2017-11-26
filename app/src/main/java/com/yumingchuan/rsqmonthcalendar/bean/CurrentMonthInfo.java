@@ -20,8 +20,4 @@ public class CurrentMonthInfo {
 
     public String currentYMD;//yyyy-MM-dd
 
-
-
-
-
 }
