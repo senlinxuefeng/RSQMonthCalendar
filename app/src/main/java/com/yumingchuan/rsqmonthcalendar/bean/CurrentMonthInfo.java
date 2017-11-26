@@ -6,7 +6,6 @@ package com.yumingchuan.rsqmonthcalendar.bean;
 
 public class CurrentMonthInfo {
 
-    public boolean isNeedRemoveData;
     public boolean isExpand;//是否是展开的
     public int weeks = 6;//一共多少周
     public int currentOpenWeek = -1;//打开的行
@@ -17,9 +16,12 @@ public class CurrentMonthInfo {
     public float monthAreaWidth;//月视图的宽度
     public int weekAreaHeight;//每周的高
 
-    public String current_yMdp;//yyyyMMdd
+    public int initY;//空隙的高度
 
-    public int startPosition = -1;//周日曆的開始位置
-    public int endPosition = -1;//周日曆的結束位置
+    public String currentYMD;//yyyy-MM-dd
+
+
+
+
 
 }

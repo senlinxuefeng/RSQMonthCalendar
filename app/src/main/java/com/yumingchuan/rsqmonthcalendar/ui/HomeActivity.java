@@ -1,18 +1,16 @@
 package com.yumingchuan.rsqmonthcalendar.ui;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
 
 import com.yumingchuan.rsqmonthcalendar.R;
 import com.yumingchuan.rsqmonthcalendar.adapter.MonthViewFragmentAdapter;
+import com.yumingchuan.rsqmonthcalendar.listener.MyOnPageChangeListener;
 import com.yumingchuan.rsqmonthcalendar.utils.TimestampTool;
+import com.yumingchuan.rsqmonthcalendar.view.CustomViewPager;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.text.ParseException;
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,12 +19,9 @@ import butterknife.ButterKnife;
 public class HomeActivity extends AppCompatActivity {
 
     @BindView(R.id.vp_monthView)
-    ViewPager vp_monthView;
+    CustomViewPager vp_monthView;
 
-    @BindView(R.id.date)
-    TextView date;
 
-    private List<Fragment> monthViewFragments;
     private MonthViewFragmentAdapter monthViewFragmentAdapter;
 
     @Override
@@ -35,84 +30,32 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        // vp_monthView = (ViewPager) findViewById(R.id.vp_monthView);
-
-        monthViewFragments = new ArrayList<>();
-        for (int i = 0; i < 48; i++) {
-            if (i >= 22 && i <= 26) {
-                monthViewFragments.add(i, MonthViewFragment.newInstance(i));
-            } else {
-                monthViewFragments.add(null);
-            }
-
-        }
-
-        monthViewFragmentAdapter = new MonthViewFragmentAdapter(getSupportFragmentManager(), monthViewFragments);
-        vp_monthView.setCurrentItem(2);
-        vp_monthView.setAdapter(monthViewFragmentAdapter);
-        vp_monthView.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-//                MonthViewFragment monthFragment = (MonthViewFragment) monthViewFragmentAdapter.getItem(position);
-//
-//                monthFragment.getCalendar();
-//
-//                if (monthFragment.isAdded()) {
-//                    //monthFragment.setWeekFragments();
-//                    date.setText(TimestampTool.sdf_all.format(monthFragment.getCalendar().getTime()));
-//                }
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                if (state == ViewPager.SCROLL_STATE_SETTLING) {
-                    Stack stack = monthViewFragmentAdapter.getStack();
-                    while (!stack.empty()) {
-                        MonthViewFragment fragment = (MonthViewFragment) stack.pop();
-                        fragment.parseData();
-                    }
-
-//                if (state == ViewPager.SCROLL_STATE_SETTLING) {
-//                    MonthViewFragment monthFragment = (MonthViewFragment) monthViewFragmentAdapter.getItem(vp_monthView.getCurrentItem());
-//
-//                    if (monthFragment.isAdded()) {
-//
-//                        date.setText(TimestampTool.sdf_all.format(monthFragment.getCalendar().getTime()));
-//                    }
-//
-//                    monthFragment.parseData();
-//
-//
-//                }
-                }
-
-                vp_monthView.setCurrentItem(24);
-
-            }
-
-
-//    @Override
-//    public void onWindowFocusChanged(boolean hasFocus) {
-//        super.onWindowFocusChanged(hasFocus);
-//
-//
-//        //        MonthViewFragment monthFragment = (MonthViewFragment) monthViewFragmentAdapter.getItem(vp_monthView.getCurrentItem() % 5);
-//        //        monthEditAreaWidth = monthFragment.getMonthCalendarArea().getWidth();
-//        //        monthEditAreaHeight = monthFragment.getMonthCalendarArea().getHeight();
-//
-//
-//    }
-        });
-
-
-
+        monthViewFragmentAdapter = new MonthViewFragmentAdapter(getSupportFragmentManager());
+        vp_monthView.setCustomViewPagerParam(1, true, monthViewFragmentAdapter, monthViewOnPageChangeListener, 24);
 
     }
+
+    MyOnPageChangeListener monthViewOnPageChangeListener = new MyOnPageChangeListener() {
+
+        @Override
+        public void onPageSelected(int position) {
+            try {
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(TimestampTool.sdf_all.parse(TimestampTool.getCurrentDateToWeb()));
+                calendar.add(Calendar.MONTH, position - 24);
+                String yMp = TimestampTool.sdf_yMp.format(calendar.getTime());
+
+//                if (!RSQApplication.getInstance().getCurrentSelectDate().contains(yMp)) {
+//                    setCurrentDateState(yMp + "-01 00:00:00");
+//                }
+//
+//                if (getMonthViewFragment() != null && getMonthViewFragment().getCustomMonthView() != null) {
+//                    getMonthViewFragment().getCustomMonthView().renderMonthCalendarBackground();
+//                }
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+    };
 }

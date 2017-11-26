@@ -1,79 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<com.yumingchuan.rsqmonthcalendar.view.MonthViewDay xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/monthViewDay"
     android:layout_width="0dp"
     android:layout_height="match_parent"
-    android:layout_weight="1"
-    android:background="@drawable/shape_rect_border_da_bg_white"
-    android:orientation="vertical"
-    android:padding="0.25dp">
+    android:layout_weight="1" />
 
-    <RelativeLayout
-        android:id="@+id/rl_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/tv_gongli"
-            android:layout_width="wrap_content"
-            android:layout_height="16dp"
-            android:layout_marginLeft="3dp"
-            android:gravity="center_vertical"
-            android:text="212112"
-            android:textColor="@color/main_gray_1"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/tv_scheduleNum"
-            android:layout_width="wrap_content"
-            android:layout_height="16dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="4dp"
-            android:gravity="bottom"
-            android:text=""
-            android:textColor="@color/bg_color"
-            android:textSize="10sp" />
-
-        <TextView
-            android:id="@+id/tv_holidays"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_alignParentRight="true"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/tv_lunar"
-            android:layout_width="wrap_content"
-            android:layout_height="16dp"
-            android:layout_below="@+id/tv_gongli"
-            android:layout_marginLeft="3dp"
-            android:gravity="center_vertical"
-            android:text="211212"
-            android:textColor="@color/main_gray_1"
-            android:textSize="12sp" />
-
-
-
-
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/rl_title">
-
-        <LinearLayout
-            android:id="@+id/ll_schedule"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="vertical">
-
-        </LinearLayout>
-
-    </RelativeLayout>
-
-
-</RelativeLayout>

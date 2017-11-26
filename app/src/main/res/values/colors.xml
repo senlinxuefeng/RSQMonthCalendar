@@ -246,4 +246,35 @@
     <color name="UU_6BC859">#6BC859</color>
 
 
+
+    <color name="IE_month_task_done">#90FF7A7A</color>
+    <color name="IU_month_task_done">#90D49D3F</color>
+    <color name="UE_month_task_done">#9069ACEF</color>
+    <color name="UU_month_task_done">#904BBB35</color>
+
+    <color name="IE_month_task">#FF7A7A</color>
+    <color name="IU_month_task">#DEA13A</color>
+    <color name="UE_month_task">#69ACEF</color>
+    <color name="UU_month_task">#6BC859</color>
+
+
+    <!--app7.0-->
+    <color name="IE_solid">#F9D7DA</color>
+    <color name="IU_solid">#F9EDD7</color>
+    <color name="UE_solid">#D5EAFF</color>
+    <color name="UU_solid">#D0EDD1</color>
+
+    <color name="ie_stroke">#FDB2A5</color>
+    <color name="iu_stroke">#FFF6E9</color>
+    <color name="ue_stroke">#DFF4FF</color>
+    <color name="uu_stroke">#CFF6C3</color>
+
+    <color name="color_month_view">#AEAEAE</color>
+    <color name="color_month_weekend">#FF7A7A</color>
+
+    <color name="month_view_rest">#3E86D6</color>
+    <color name="month_view_work">#FF2D2D</color>
+
+
+
 </resources>

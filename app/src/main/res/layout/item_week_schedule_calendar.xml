@@ -64,7 +64,6 @@
             android:layout_gravity="center_vertical"
             android:layout_marginRight="9dp"
             android:gravity="center"
-            android:text="@string/icon_list"
             android:textColor="@color/log_fragment"
             android:textSize="24dp"
             android:visibility="visible" />
